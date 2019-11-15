@@ -1,2 +1,3 @@
 11/15/2019
-Gomoku header file
+GomokuBoard header file
+GomokuBoard cpp file
