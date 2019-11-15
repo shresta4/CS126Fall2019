@@ -5,6 +5,7 @@
 
 using namespace std;
 constexpr int BOARD_SIZE = 19;
+constexpr int GOAL = 5; 
 
 class GomokuBoard {
 	string board; 
