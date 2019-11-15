@@ -1,10 +1,14 @@
 #include "ofMain.h"
 #include "ofApp.h"
+#include "gomoku_board.h"
+#include <iostream>
+
+using namespace std; 
 
 //========================================================================
 int main( ){
     std::cout << "Hello"; 
-
+	GomokuBoard gb = GomokuBoard(); 
 
 	ofSetupOpenGL(1024,768,OF_WINDOW);			// <-------- setup the GL context
 
