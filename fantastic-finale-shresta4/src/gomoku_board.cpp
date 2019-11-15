@@ -34,7 +34,9 @@ void GomokuBoard::GenerateLookupTable() {
     for (int i = 0; i < BOARD_SIZE; i++) {
         int row_start = i * BOARD_SIZE;  // each iteration of the loop will make
                                          // this: 0, 19, 38, etc.
-        int row_end = row_start + (BOARD_SIZE - 1);  // each iteration will make this: 18, 37, 56, etc.
+        int row_end =
+            row_start + (BOARD_SIZE -
+                         1);  // each iteration will make this: 18, 37, 56, etc.
 
         // make every possible '5 in a row' within that row
         for (int j = row_start; j <= row_end - GOAL + 1; j++) {
@@ -49,12 +51,11 @@ void GomokuBoard::GenerateLookupTable() {
 
     // cols
     for (int i = 0; i < BOARD_SIZE; i++) {
-        int col_start = i; 
-		int col_end = i + (BOARD_SIZE - 1) * BOARD_SIZE; 
+        int col_start = i;
+        int col_end = i + (BOARD_SIZE - 1) * BOARD_SIZE;
 
-		// make every possible '5 in a column' within that column
-		for (int j)
-    }
+        // make every possible '5 in a column' within that column
+        for (int j) }
 
     // diagonals top left to bottom right
 
