@@ -6,3 +6,7 @@
 - Finished GomokuBoard class
 - Adding constructor to read from json file
 - Asked on piazza how to write test cases
+
+11/_ /2019
+- Read from json
+- Make player abstract class and have AI and User extend from it 
