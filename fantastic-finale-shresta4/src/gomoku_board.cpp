@@ -156,6 +156,16 @@ bool GomokuBoard::PlacePiece(int loc, int player_id) {
     }
 }
 
+int GetWinner() {
+
+}
+
+bool GomokuBoard::PlayerWins(int player_id) {
+    for (int i = 0; i < lookup.size(); i++) {
+		
+    }
+}
+
 ostream &operator<<(ostream &output, const GomokuBoard &gb) {
     int index = 0;
     for (int i = 0; i < BOARD_SIZE; i++) {

@@ -15,12 +15,14 @@ class GomokuBoard {
     GomokuBoard();                            // empty board
     GomokuBoard(string json_file);            // resume game stored in json file
     void WriteBoardToJson(string json_file);  // saves game
-    void GenerateLookupTable();  // creates table of all possible
-                                                // winning combinations
-    bool PlacePiece(
-        int loc,
-        int player_id);  // places piece, B = X, W = O, false iff invalid move
+    void GenerateLookupTable();               // creates table of all possible
+                                              // winning combinations
+    bool PlacePiece(int loc,
+                    int player_id);  // places piece, B = X (1), W = O (0),
+                                     // false iff invalid move
+    int GetWinner();
+    bool PlayerWins(int player_id);
     friend ostream &operator<<(ostream &output,
                                const GomokuBoard &gb);  // display
-	// evaluate state of game method 
+    // evaluate state of game method
 };
