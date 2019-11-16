@@ -14,12 +14,6 @@ GomokuBoard::GomokuBoard() {
         "......................................................................"
         "...........";
     GenerateLookupTable();
-    for (int i = 0; i < lookup.size(); i++) {
-        for (int j = 0; j < lookup[i].size(); j++) {
-            cout << lookup[i][j] << " ";
-        }
-        cout << endl;
-    }
 }
 
 GomokuBoard::GomokuBoard(string json_file) {
@@ -149,11 +143,8 @@ bool GomokuBoard::PlacePiece(int loc, int player_id) {
         return false;
     } else {
         board[loc] = player_id;
-        /*
-                might have to do something like this
-                board.substr(0, loc) + to_string(player_id) + board.substr(loc +
-           1);
-                */
+        board =
+            board.substr(0, loc) + to_string(player_id) + board.substr(loc + 1); 
     }
 }
 
@@ -170,11 +161,11 @@ bool GomokuBoard::PlayerWins(int player_id) {
     for (int i = 0; i < lookup.size(); i++) {
         bool win = true;
         vector<int> combo = lookup[i];
-        for (int j = 0; j < combo.size(); j++) {
-            if (combo[j] != player_id) {
+        for (int j = 0; j < combo.size(); j++) { 
+            if (board[combo[j]] != player_id + '0') {
                 win = false;
             }
-        }
+        } 
         if (win) {
             return true;
         }
