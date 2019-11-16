@@ -6,6 +6,7 @@
 - Finished GomokuBoard class
 - Adding constructor to read from json file
 - Asked on piazza how to write test cases
+- "AI" player with random moves
 
 11/_ /2019
 - Read from json
