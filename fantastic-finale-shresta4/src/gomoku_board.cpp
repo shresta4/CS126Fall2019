@@ -1,8 +1,8 @@
 #include "gomoku_board.h"
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <vector>
-// #include <nlohmann/json.hpp>
 
 using namespace std;
 
@@ -158,8 +158,10 @@ int GomokuBoard::GetWinner() {
         return player_1_id;
     } else if (PlayerWins(player_0_id)) {
         return player_0_id;
+    } else if (count(board.begin(), board.end(), EMPTY_SPACE) == 0) {
+        return -10;	// code for tie 
     }
-    return -1;
+    return -1;  // code for no winner
 }
 
 bool GomokuBoard::PlayerWins(int player_id) {

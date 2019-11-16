@@ -6,6 +6,7 @@
 using namespace std;
 constexpr int BOARD_SIZE = 19;
 constexpr int GOAL = 5;
+constexpr char EMPTY_SPACE = '.';
 
 class GomokuBoard {
    public:
@@ -14,8 +15,9 @@ class GomokuBoard {
     int player_1_id;
     int player_0_id;
 
-    GomokuBoard();                            // empty board
-    GomokuBoard(string stored_board, int id_1, int id_0);            // resume game stored in json file
+    GomokuBoard();  // empty board
+    GomokuBoard(string stored_board, int id_1,
+                int id_0);                    // resume game stored in json file
     void WriteBoardToJson(string json_file);  // saves game
     void GenerateLookupTable();               // creates table of all possible
                                               // winning combinations
