@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+// #include <nlohmann/json.hpp>
 
 using namespace std;
 
@@ -13,13 +14,17 @@ GomokuBoard::GomokuBoard() {
         "......................................................................"
         "......................................................................"
         "...........";
+    player_1_id = 1;
+    player_0_id = 0;
     GenerateLookupTable();
 }
 
-GomokuBoard::GomokuBoard(string json_file) {
+GomokuBoard::GomokuBoard(string stored_board, int id_1, int id_0) {
     // read from
     // json!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    board = "";
+    board = stored_board;
+    player_1_id = id_1;
+    player_0_id = id_0;
     GenerateLookupTable();
 }
 
@@ -144,7 +149,7 @@ bool GomokuBoard::PlacePiece(int loc, int player_id) {
     } else {
         board[loc] = player_id;
         board =
-            board.substr(0, loc) + to_string(player_id) + board.substr(loc + 1); 
+            board.substr(0, loc) + to_string(player_id) + board.substr(loc + 1);
     }
 }
 
@@ -161,11 +166,11 @@ bool GomokuBoard::PlayerWins(int player_id) {
     for (int i = 0; i < lookup.size(); i++) {
         bool win = true;
         vector<int> combo = lookup[i];
-        for (int j = 0; j < combo.size(); j++) { 
+        for (int j = 0; j < combo.size(); j++) {
             if (board[combo[j]] != player_id + '0') {
                 win = false;
             }
-        } 
+        }
         if (win) {
             return true;
         }

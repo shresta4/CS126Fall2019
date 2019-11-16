@@ -42,4 +42,9 @@
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="saved_board.json">
+      <Filter>src</Filter>
+    </None>
+  </ItemGroup>
 </Project>

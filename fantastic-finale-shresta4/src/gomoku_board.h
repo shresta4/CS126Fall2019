@@ -6,16 +6,16 @@
 using namespace std;
 constexpr int BOARD_SIZE = 19;
 constexpr int GOAL = 5;
-constexpr int player_1_id = 1;
-constexpr int player_0_id = 0;
 
 class GomokuBoard {
    public:
     string board;
     vector<vector<int>> lookup;
+    int player_1_id;
+    int player_0_id;
 
     GomokuBoard();                            // empty board
-    GomokuBoard(string json_file);            // resume game stored in json file
+    GomokuBoard(string stored_board, int id_1, int id_0);            // resume game stored in json file
     void WriteBoardToJson(string json_file);  // saves game
     void GenerateLookupTable();               // creates table of all possible
                                               // winning combinations
