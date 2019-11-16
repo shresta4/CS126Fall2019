@@ -144,7 +144,11 @@ void GomokuBoard::GenerateLookupTable() {
 }
 
 bool GomokuBoard::PlacePiece(int loc, int player_id) {
-    if (board[loc] != '.') {  // space already taken
+    if (loc < 0 || loc > BOARD_SIZE * BOARD_SIZE - 1) {
+        cout << "Invalid move." << endl; 
+        return false; // invalid 
+    } else if (board[loc] != '.') {  // space already taken
+        cout << "Invalid move." << endl; 
         return false;
     } else {
         board[loc] = player_id;
@@ -159,7 +163,7 @@ int GomokuBoard::GetWinner() {
     } else if (PlayerWins(player_0_id)) {
         return player_0_id;
     } else if (count(board.begin(), board.end(), EMPTY_SPACE) == 0) {
-        return -10;	// code for tie 
+        return -10;  // code for tie
     }
     return -1;  // code for no winner
 }

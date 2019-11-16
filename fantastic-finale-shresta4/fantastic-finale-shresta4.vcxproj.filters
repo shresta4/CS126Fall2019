@@ -20,6 +20,7 @@
       <Filter>tests</Filter>
     </ClCompile>
     <ClCompile Include="ai_player.cpp" />
+    <ClCompile Include="human_player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -43,6 +44,7 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="ai_player.h" />
+    <ClInclude Include="human_player.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
