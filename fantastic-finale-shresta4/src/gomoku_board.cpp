@@ -123,10 +123,11 @@ void GomokuBoard::GenerateLookupTable() {
         }
     }
 
-	// diagonals top right to bottom left, bottom half
+    // diagonals top right to bottom left, bottom half
     for (int i = BOARD_SIZE * 2 - 1; i < BOARD_SIZE * BOARD_SIZE; i++) {
         int diagonal_start = i;
-        int diagonal_end = (BOARD_SIZE * BOARD_SIZE - 1) - (BOARD_SIZE - (diagonal_start + 1) / BOARD_SIZE);
+        int diagonal_end = (BOARD_SIZE * BOARD_SIZE - 1) -
+                           (BOARD_SIZE - (diagonal_start + 1) / BOARD_SIZE);
 
         // make every possible '5 in a diagonal' within that diagonal
         for (int j = diagonal_start;
@@ -156,14 +157,29 @@ bool GomokuBoard::PlacePiece(int loc, int player_id) {
     }
 }
 
-int GetWinner() {
-
+int GomokuBoard::GetWinner() {
+    if (PlayerWins(player_1_id)) {
+        return player_1_id;
+    } else if (PlayerWins(player_0_id)) {
+        return player_0_id;
+    }
+    return -1;
 }
 
 bool GomokuBoard::PlayerWins(int player_id) {
     for (int i = 0; i < lookup.size(); i++) {
-		
+        bool win = true;
+        vector<int> combo = lookup[i];
+        for (int j = 0; j < combo.size(); j++) {
+            if (combo[j] != player_id) {
+                win = false;
+            }
+        }
+        if (win) {
+            return true;
+        }
     }
+    return false;
 }
 
 ostream &operator<<(ostream &output, const GomokuBoard &gb) {

@@ -6,6 +6,8 @@
 using namespace std;
 constexpr int BOARD_SIZE = 19;
 constexpr int GOAL = 5;
+constexpr int player_1_id = 1;
+constexpr int player_0_id = 0;
 
 class GomokuBoard {
    public:
