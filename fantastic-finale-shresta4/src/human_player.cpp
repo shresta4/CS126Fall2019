@@ -16,3 +16,5 @@ int HumanPlayer::GetNextMove() {
 }
 
 void HumanPlayer::AddWin() { wins++; }
+
+int HumanPlayer::GetId() { return id; }

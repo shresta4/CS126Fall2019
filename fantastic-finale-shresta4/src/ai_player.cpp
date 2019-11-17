@@ -18,3 +18,7 @@ int AI_Player::GetNextMove(string board, int opponent_id) { // currently returns
 void AI_Player::AddWin() {
 	wins++; 
 }
+
+int AI_Player::GetId() {
+	return id; 
+}

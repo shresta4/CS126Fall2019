@@ -7,6 +7,8 @@ using namespace std;
 constexpr int BOARD_SIZE = 19;
 constexpr int GOAL = 5;
 constexpr char EMPTY_SPACE = '.';
+constexpr int TIE_CODE = -10;
+constexpr int NO_RESULT = -1;
 
 class GomokuBoard {
    public:

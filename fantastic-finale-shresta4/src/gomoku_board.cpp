@@ -1,10 +1,13 @@
 #include "gomoku_board.h"
 #include <algorithm>
+#include <fstream>
 #include <iostream>
+#include <json.hpp>
 #include <string>
 #include <vector>
 
 using namespace std;
+using json = nlohmann::json;
 
 GomokuBoard::GomokuBoard() {
     board =
@@ -145,10 +148,10 @@ void GomokuBoard::GenerateLookupTable() {
 
 bool GomokuBoard::PlacePiece(int loc, int player_id) {
     if (loc < 0 || loc > BOARD_SIZE * BOARD_SIZE - 1) {
-        cout << "Invalid move." << endl; 
-        return false; // invalid 
+        cout << "Invalid move." << endl;
+        return false;                // invalid
     } else if (board[loc] != '.') {  // space already taken
-        cout << "Invalid move." << endl; 
+        cout << "Invalid move." << endl;
         return false;
     } else {
         board[loc] = player_id;
@@ -163,9 +166,9 @@ int GomokuBoard::GetWinner() {
     } else if (PlayerWins(player_0_id)) {
         return player_0_id;
     } else if (count(board.begin(), board.end(), EMPTY_SPACE) == 0) {
-        return -10;  // code for tie
+        return TIE_CODE;  // code for tie
     }
-    return -1;  // code for no winner
+    return NO_RESULT;  // code for no winner
 }
 
 bool GomokuBoard::PlayerWins(int player_id) {
@@ -195,4 +198,16 @@ ostream &operator<<(ostream &output, const GomokuBoard &gb) {
     }
     output << endl;
     return output;
+}
+
+void GomokuBoard::WriteBoardToJson(string json_file) {
+    json j;
+    j["board"] = "abc";
+    // j["player_1_id"] = player_1_id;
+    // j["player_0_id"] = player_0_id;
+
+    ofstream file(json_file);
+    file << j << endl;
+    file.close();
+    cout << "Hello"; 
 }

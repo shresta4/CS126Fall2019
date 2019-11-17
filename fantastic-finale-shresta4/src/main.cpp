@@ -17,7 +17,10 @@ int main() {
 	gb.PlacePiece(4, 1); 
 	cout << gb << endl; 
 	cout << gb.GetWinner(); 
+	gb.WriteBoardToJson("sample_board_test.json");
     ofSetupOpenGL(1024, 768, OF_WINDOW);  // <-------- setup the GL context
+
+	
 
     // this kicks off the running of my app
     // can be OF_WINDOW or OF_FULLSCREEN

@@ -19,8 +19,15 @@
     <ClCompile Include="test_gomoku_board.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="ai_player.cpp" />
-    <ClCompile Include="human_player.cpp" />
+    <ClCompile Include="src\ai_player.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\human_player.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\round.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -43,14 +50,25 @@
     <ClInclude Include="player.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="ai_player.h" />
-    <ClInclude Include="human_player.h" />
+    <ClInclude Include="src\ai_player.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="human_player.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="round.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Downloads\json.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="saved_board.json">
+      <Filter>src</Filter>
+    </None>
+    <None Include="sample_board_test.json">
       <Filter>src</Filter>
     </None>
   </ItemGroup>
