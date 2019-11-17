@@ -3,6 +3,10 @@
 
 using namespace std;
 
+HumanPlayer::HumanPlayer() {
+    id = 0;
+    wins = 0;
+}
 HumanPlayer::HumanPlayer(int h_id, int current_wins) {
     id = h_id;
     wins = current_wins;

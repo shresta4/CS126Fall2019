@@ -4,7 +4,7 @@
 
 using namespace std;
 
-/*Round::Round(AI_Player a, HumanPlayer h, GomokuBoard g) {
+Round::Round(AI_Player a, HumanPlayer h, GomokuBoard g) {
     ai = a;
     human = h;
     gb = g;
@@ -30,4 +30,4 @@ void Round::PlayRound() {
     } else {
         cout << "Round over. Result: Player " << human.GetId() << " won.";
     }
-}*/
+}
