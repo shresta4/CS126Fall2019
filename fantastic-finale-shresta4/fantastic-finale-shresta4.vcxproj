@@ -210,8 +210,8 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="sample_board_test.json" />
     <None Include="saved_board.json" />
+    <None Include="src\sample_board_test.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>

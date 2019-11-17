@@ -1,3 +1,4 @@
+#include <fstream>
 #include <iostream>
 #include "gomoku_board.h"
 #include "ofApp.h"
@@ -10,17 +11,22 @@ int main() {
     std::cout << "Hello";
     GomokuBoard gb = GomokuBoard();
     cout << gb;
-    gb.PlacePiece(0, 1); 
-	gb.PlacePiece(1, 1); 
-	gb.PlacePiece(2, 1); 
-	gb.PlacePiece(3, 1); 
-	gb.PlacePiece(4, 1); 
-	cout << gb << endl; 
-	cout << gb.GetWinner(); 
-	gb.WriteBoardToJson("sample_board_test.json");
+    gb.PlacePiece(0, 1);
+    gb.PlacePiece(1, 1);
+    gb.PlacePiece(2, 1);
+    gb.PlacePiece(3, 1);
+    gb.PlacePiece(4, 1);
+    cout << gb << endl;
+    cout << gb.GetWinner();
+
+    //ofstream file("C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json");
+    //file << "hi";
+
+
+    gb.WriteBoardToJson("C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json");
     ofSetupOpenGL(1024, 768, OF_WINDOW);  // <-------- setup the GL context
 
-	
+
 
     // this kicks off the running of my app
     // can be OF_WINDOW or OF_FULLSCREEN

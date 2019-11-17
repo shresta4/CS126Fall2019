@@ -202,12 +202,18 @@ ostream &operator<<(ostream &output, const GomokuBoard &gb) {
 
 void GomokuBoard::WriteBoardToJson(string json_file) {
     json j;
-    j["board"] = "abc";
-    // j["player_1_id"] = player_1_id;
-    // j["player_0_id"] = player_0_id;
+    j["board"] = board;
+    j["player_1_id"] = player_1_id; 
+    j["player_0_id"] = player_0_id;
 
     ofstream file(json_file);
     file << j << endl;
     file.close();
     cout << "Hello"; 
+
+	std::ifstream i("C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json");
+    json j2;
+    i >> j2;
+    cout << j2["board"]; 
+
 }

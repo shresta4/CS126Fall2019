@@ -68,7 +68,7 @@
     <None Include="saved_board.json">
       <Filter>src</Filter>
     </None>
-    <None Include="sample_board_test.json">
+    <None Include="src\sample_board_test.json">
       <Filter>src</Filter>
     </None>
   </ItemGroup>
