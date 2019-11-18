@@ -18,3 +18,4 @@
 - Make the json read a round instead of a game 
 - Change the player id to a string, change the piece to X and O. 
 - Currently free style gomoku. Implement: standard gomoku. No overlines 
+- Check for invalid move whether the piece is already taken or not. 
