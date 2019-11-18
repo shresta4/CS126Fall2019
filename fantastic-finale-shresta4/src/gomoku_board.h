@@ -22,7 +22,6 @@ class GomokuBoard {
     GomokuBoard();  // empty board
     GomokuBoard(string stored_board, AI_Player a,
                 HumanPlayer h);                    // resume game stored in json file
-    // void WriteBoardToJson(string json_file);  // saves game
     void GenerateLookupTable();               // creates table of all possible
                                               // winning combinations
     bool PlacePiece(int loc,

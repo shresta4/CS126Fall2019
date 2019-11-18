@@ -145,9 +145,13 @@ void GomokuBoard::GenerateLookupTable() {
 }
 
 bool GomokuBoard::PlacePiece(int loc, char player_piece) {
+    if (loc == -1) {
+        cout << "Invalid move." << endl;
+        return false; 
+    }
     if (loc < 0 || loc > BOARD_SIZE * BOARD_SIZE - 1) {
         cout << "Invalid move." << endl;
-        return false;                // invalid
+        return false;                        // invalid
     } else if (board[loc] != EMPTY_SPACE) {  // space already taken
         cout << "Invalid move." << endl;
         return false;

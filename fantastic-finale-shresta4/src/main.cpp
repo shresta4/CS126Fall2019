@@ -1,8 +1,6 @@
 #include <fstream>
 #include <iostream>
-//#include "ai_player.h"
 #include "gomoku_board.h"
-//#include "human_player.h"
 #include "ofApp.h"
 #include "ofMain.h"
 #include "round.h"

@@ -13,23 +13,25 @@ Round::Round(AI_Player &a, HumanPlayer &h, GomokuBoard &g)
 }
 void Round::PlayRound() {
     while (gb.GetWinner() == "no_result") {
+        cout << "____________________________________________" << endl;
+        cout << gb << endl;
         if (current_player_id == ai.id) {
-            cout << "ai turn"; 
-            int potential_move = ai.GetNextMove(gb.board, human.piece, EMPTY_SPACE);
+            cout << "ai turn" << endl;
+            int potential_move =
+                ai.GetNextMove(gb.board, human.piece, EMPTY_SPACE);
             gb.PlacePiece(potential_move, ai.piece);
-            cout << "^^ placed piece by " << current_player_id << endl; 
             current_player_id = human.id;
-            cout << current_player_id << endl;
         } else {
-            int potential_move = human.GetNextMove();
-            gb.PlacePiece(potential_move, human.piece);
+            bool moved = false;
+            do {
+                int potential_move = human.GetNextMove();
+                moved = gb.PlacePiece(potential_move, human.piece);
+            } while (!moved);
             current_player_id = ai.id;
-            cout << "human turn, but skipping" << endl; 
-            cout << current_player_id << endl; 
+            cout << "human turn, but skipping" << endl;
         }
-        cout << gb;
-        cout << "__________________________________________________" << endl; 
     }
+    cout << gb << endl;
     string win_status = gb.GetWinner();
     if (win_status == "tie") {
         cout << "Round over. Result: Tie." << endl;
