@@ -191,11 +191,11 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Downloads\json.hpp" />
     <ClInclude Include="player.h" />
-    <ClInclude Include="round.h" />
     <ClInclude Include="src\ai_player.h" />
     <ClInclude Include="src\human_player.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\gomoku_board.h" />
+    <ClInclude Include="src\round.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

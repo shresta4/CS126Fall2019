@@ -53,11 +53,11 @@
     <ClInclude Include="src\ai_player.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="round.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\json.hpp" />
     <ClInclude Include="src\human_player.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\round.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
