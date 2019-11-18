@@ -17,17 +17,15 @@ GomokuBoard::GomokuBoard() {
         "......................................................................"
         "......................................................................"
         "...........";
-    player_1_id = 1;
-    player_0_id = 0;
+    ai = AI_Player();
+    human = HumanPlayer();
     GenerateLookupTable();
 }
 
-GomokuBoard::GomokuBoard(string stored_board, int id_1, int id_0) {
-    // read from
-    // json!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+GomokuBoard::GomokuBoard(string stored_board, AI_Player a, HumanPlayer h) {
     board = stored_board;
-    player_1_id = id_1;
-    player_0_id = id_0;
+    ai = a;
+    human = h;
     GenerateLookupTable();
 }
 
@@ -146,37 +144,35 @@ void GomokuBoard::GenerateLookupTable() {
     }
 }
 
-bool GomokuBoard::PlacePiece(int loc, int player_id) {
+bool GomokuBoard::PlacePiece(int loc, char player_piece) {
     if (loc < 0 || loc > BOARD_SIZE * BOARD_SIZE - 1) {
         cout << "Invalid move." << endl;
         return false;                // invalid
-    } else if (board[loc] != '.') {  // space already taken
+    } else if (board[loc] != EMPTY_SPACE) {  // space already taken
         cout << "Invalid move." << endl;
         return false;
     } else {
-        board[loc] = player_id;
-        board =
-            board.substr(0, loc) + to_string(player_id) + board.substr(loc + 1);
+        board[loc] = player_piece;
     }
 }
 
-int GomokuBoard::GetWinner() {
-    if (PlayerWins(player_1_id)) {
-        return player_1_id;
-    } else if (PlayerWins(player_0_id)) {
-        return player_0_id;
+string GomokuBoard::GetWinner() {
+    if (PlayerWins(ai.piece)) {
+        return ai.id;
+    } else if (PlayerWins(human.piece)) {
+        return human.id;
     } else if (count(board.begin(), board.end(), EMPTY_SPACE) == 0) {
-        return TIE_CODE;  // code for tie
+        return "tie";  // code for tie
     }
-    return NO_RESULT;  // code for no winner
+    return "no_result";  // code for no winner yet
 }
 
-bool GomokuBoard::PlayerWins(int player_id) {
+bool GomokuBoard::PlayerWins(char player_piece) {
     for (int i = 0; i < lookup.size(); i++) {
         bool win = true;
         vector<int> combo = lookup[i];
         for (int j = 0; j < combo.size(); j++) {
-            if (board[combo[j]] != player_id + '0') {
+            if (board[combo[j]] != player_piece) {
                 win = false;
             }
         }
@@ -200,20 +196,21 @@ ostream &operator<<(ostream &output, const GomokuBoard &gb) {
     return output;
 }
 
-void GomokuBoard::WriteBoardToJson(string json_file) {
+/*void GomokuBoard::WriteBoardToJson(string json_file) {
     json j;
     j["board"] = board;
-    j["player_1_id"] = player_1_id; 
+    j["player_1_id"] = player_1_id;
     j["player_0_id"] = player_0_id;
 
     ofstream file(json_file);
     file << j << endl;
     file.close();
-    cout << "Hello"; 
+    cout << "Hello";
 
-	std::ifstream i("C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json");
+        std::ifstream
+i("C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json");
     json j2;
     i >> j2;
-    cout << j2["board"]; 
+    cout << j2["board"];
 
-}
+}*/

@@ -1,24 +1,26 @@
 #include "human_player.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 HumanPlayer::HumanPlayer() {
-    id = 0;
+    id = "user";
+    piece = 'O'; 
     wins = 0;
 }
-HumanPlayer::HumanPlayer(int h_id, int current_wins) {
-    id = h_id;
+
+HumanPlayer::HumanPlayer(string i, char p, int current_wins) {
+    id = i;
+    piece = p;     
     wins = current_wins;
 }
 
 int HumanPlayer::GetNextMove() {
-    cout << endl << "Player " << id << " turn. Enter move: ";
+    cout << endl << id << " turn. Enter move: ";
     int move;
     cin >> move;
     return move;
 }
 
 void HumanPlayer::AddWin() { wins++; }
-
-int HumanPlayer::GetId() { return id; }

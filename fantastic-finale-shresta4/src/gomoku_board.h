@@ -2,32 +2,34 @@
 
 #include <string>
 #include <vector>
+#include "ai_player.h"
+#include "human_player.h"
 
 using namespace std;
 constexpr int BOARD_SIZE = 19;
 constexpr int GOAL = 5;
 constexpr char EMPTY_SPACE = '.';
-constexpr int TIE_CODE = -10;
-constexpr int NO_RESULT = -1;
+// string tie_code = "Tie.";
+// string no_result = "No result.";
 
 class GomokuBoard {
    public:
     string board;
     vector<vector<int>> lookup;
-    int player_1_id;
-    int player_0_id;
+    AI_Player ai;
+    HumanPlayer human; 
 
     GomokuBoard();  // empty board
-    GomokuBoard(string stored_board, int id_1,
-                int id_0);                    // resume game stored in json file
-    void WriteBoardToJson(string json_file);  // saves game
+    GomokuBoard(string stored_board, AI_Player a,
+                HumanPlayer h);                    // resume game stored in json file
+    // void WriteBoardToJson(string json_file);  // saves game
     void GenerateLookupTable();               // creates table of all possible
                                               // winning combinations
     bool PlacePiece(int loc,
-                    int player_id);  // places piece, B = X (1), W = O (0),
+                    char player_piece);  // places piece, B = X (1), W = O (0),
                                      // false iff invalid move
-    int GetWinner();
-    bool PlayerWins(int player_id);
+    string GetWinner();
+    bool PlayerWins(char player_piece);
     friend ostream &operator<<(ostream &output,
                                const GomokuBoard &gb);  // display
     // evaluate state of game method

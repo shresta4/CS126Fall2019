@@ -9,32 +9,33 @@ Round::Round(AI_Player &a, HumanPlayer &h, GomokuBoard &g)
     ai = a;
     human = h;
     gb = g;
-    current_player_id = ai.GetId();
+    current_player_id = ai.id;
 }
 void Round::PlayRound() {
-    while (gb.GetWinner() == NO_RESULT) {
-        if (current_player_id == ai.GetId()) {
-            int potential_move = ai.GetNextMove(gb.board, human.GetId());
-            gb.PlacePiece(potential_move, current_player_id);
+    while (gb.GetWinner() == "no_result") {
+        if (current_player_id == ai.id) {
+            cout << "ai turn"; 
+            int potential_move = ai.GetNextMove(gb.board, human.piece, EMPTY_SPACE);
+            gb.PlacePiece(potential_move, ai.piece);
             cout << "^^ placed piece by " << current_player_id << endl; 
-            current_player_id = human.GetId();
+            current_player_id = human.id;
             cout << current_player_id << endl;
         } else {
             int potential_move = human.GetNextMove();
-            gb.PlacePiece(potential_move, current_player_id);
-            current_player_id = ai.GetId();
+            gb.PlacePiece(potential_move, human.piece);
+            current_player_id = ai.id;
+            cout << "human turn, but skipping" << endl; 
             cout << current_player_id << endl; 
         }
         cout << gb;
         cout << "__________________________________________________" << endl; 
     }
-    int win_status = gb.GetWinner();
-    if (win_status == TIE_CODE) {
+    string win_status = gb.GetWinner();
+    if (win_status == "tie") {
         cout << "Round over. Result: Tie." << endl;
-    } else if (win_status = ai.GetId()) {
-        cout << "Round over. Result: Player " << ai.GetId() << " won.";
-        cout << "AI won" << endl; 
+    } else if (win_status == ai.id) {
+        cout << "Round over. Result: Player " << ai.id << " won.";
     } else {
-        cout << "Round over. Result: Player " << human.GetId() << " won.";
+        cout << "Round over. Result: Player " << human.id << " won.";
     }
 }

@@ -1,11 +1,16 @@
 #pragma once
+
+#include <string>
+
+using namespace std; 
+
 class HumanPlayer {
    public:
-    int id;
+    string id;
+    char piece;
     int wins;
-    HumanPlayer(); 
-    HumanPlayer(int h_id, int current_wins);
+    HumanPlayer();
+    HumanPlayer(string i, char p, int current_wins);
     int GetNextMove();
     void AddWin();
-    int GetId();
 };
