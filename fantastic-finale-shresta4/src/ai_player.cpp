@@ -1,5 +1,8 @@
 #include "ai_player.h"
 #include "gomoku_board.h"
+#include <iostream>
+
+using namespace std; 
 
 AI_Player::AI_Player() {
     id = 0;
@@ -15,6 +18,7 @@ int AI_Player::GetNextMove(
     string board, int opponent_id) {  // currently returns next available move
     for (int i = 0; i < board.size(); i++) {
         if (board[i] == EMPTY_SPACE) {
+            cout << "AI placing piece at " << i << endl;
             return i;
         }
     }

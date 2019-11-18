@@ -8,6 +8,7 @@ Round::Round(AI_Player a, HumanPlayer h, GomokuBoard g) {
     ai = a;
     human = h;
     gb = g;
+    current_player_id = 0;
 }
 void Round::PlayRound() {
     while (gb.GetWinner() == NO_RESULT) {

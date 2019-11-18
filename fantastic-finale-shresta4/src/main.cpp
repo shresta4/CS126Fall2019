@@ -1,32 +1,22 @@
 #include <fstream>
 #include <iostream>
+#include "ai_player.h"
 #include "gomoku_board.h"
+#include "human_player.h"
 #include "ofApp.h"
 #include "ofMain.h"
+#include "round.h"
 
 using namespace std;
 
 //========================================================================
 int main() {
     std::cout << "Hello";
-    GomokuBoard gb = GomokuBoard();
-    cout << gb;
-    gb.PlacePiece(0, 1);
-    gb.PlacePiece(1, 1);
-    gb.PlacePiece(2, 1);
-    gb.PlacePiece(3, 1);
-    gb.PlacePiece(4, 1);
-    cout << gb << endl;
-    cout << gb.GetWinner();
-
-    //ofstream file("C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json");
-    //file << "hi";
-
-
-    gb.WriteBoardToJson("C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json");
+    GomokuBoard gb1 = GomokuBoard();
+    AI_Player ai1 = AI_Player(0, 0);
+    HumanPlayer h1 = HumanPlayer(0, 0);
+    Round r = Round(ai1, h1, gb1);
     ofSetupOpenGL(1024, 768, OF_WINDOW);  // <-------- setup the GL context
-
-
 
     // this kicks off the running of my app
     // can be OF_WINDOW or OF_FULLSCREEN
