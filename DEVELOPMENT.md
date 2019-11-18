@@ -11,6 +11,7 @@
 11/17/2019
 - HumanPlayer class that takes input (to-do: account for people entering invalid values)
 - Reading and writing to json using nlohmann/json.hpp
+- Made sure Round.cpp works
 
 11/18/2019
 - Change player id to a string, change piece to a char
