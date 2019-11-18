@@ -22,3 +22,4 @@
 - Currently free style gomoku. Implement: standard gomoku. No overlines 
 - Check for invalid move whether the piece is already taken or not. 
 - Make a file with constants "tie" "no result" etc etc. 
+- Be able to reassign a player to the gomoku board class
