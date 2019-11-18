@@ -12,6 +12,6 @@ class Round {
     HumanPlayer &human;
     GomokuBoard &gb;
     int current_player_id;
-    Round(AI_Player a, HumanPlayer h, GomokuBoard g);
+    Round(AI_Player &a, HumanPlayer &h, GomokuBoard &g);
     void PlayRound();
 };
