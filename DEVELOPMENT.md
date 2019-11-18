@@ -19,3 +19,4 @@
 - Change the player id to a string, change the piece to X and O. 
 - Currently free style gomoku. Implement: standard gomoku. No overlines 
 - Check for invalid move whether the piece is already taken or not. 
+- Make a file with constants "tie" "no result" etc etc. 
