@@ -18,7 +18,31 @@ GomokuBoard::GomokuBoard() {
         "......................................................................"
         "...........";
     ai = AI_Player();
-    human = HumanPlayer();
+
+    // create the user object
+    cout << "Select a user name: ";
+    string user_name;
+    cin >> user_name;
+    while (user_name.length() == 0 || user_name == "computer") {
+        cout << endl << "Please enter a valid name/one that is not taken yet: ";
+        cin >> user_name;
+    }
+    cout << endl << "Do you want to be X or O?";
+    char user_piece;
+    cin >> user_piece;
+    while (user_piece != 'X' && user_piece != 'O') {
+        cout << endl << "Please enter either X or O: ";
+        cin >> user_piece;
+    }
+    char ai_piece;
+    if (user_piece == 'X') {
+        ai_piece = 'O';
+    } else {
+        ai_piece = 'X'; 
+	}
+
+    human = HumanPlayer(user_name, user_piece, 0);
+    ai = AI_Player("computer", ai_piece, 0); 
     GenerateLookupTable();
 }
 
@@ -147,7 +171,7 @@ void GomokuBoard::GenerateLookupTable() {
 bool GomokuBoard::PlacePiece(int loc, char player_piece) {
     if (loc == -1) {
         cout << "Invalid move." << endl;
-        return false; 
+        return false;
     }
     if (loc < 0 || loc > BOARD_SIZE * BOARD_SIZE - 1) {
         cout << "Invalid move." << endl;

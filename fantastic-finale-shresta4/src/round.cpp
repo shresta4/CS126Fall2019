@@ -9,7 +9,13 @@ Round::Round(AI_Player &a, HumanPlayer &h, GomokuBoard &g)
     ai = a;
     human = h;
     gb = g;
-    current_player_id = ai.id;
+
+    // first player is X
+    if (ai.piece == 'X') {
+        current_player_id = ai.id;
+    } else {
+        current_player_id = human.id;
+    }
 }
 void Round::PlayRound() {
     while (gb.GetWinner() == "no_result") {

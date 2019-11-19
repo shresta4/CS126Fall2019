@@ -19,7 +19,8 @@ class GomokuBoard {
     AI_Player ai;
     HumanPlayer human; 
 
-    GomokuBoard();  // empty board
+    GomokuBoard(); // starting game from scratch
+	// starting game from json
     GomokuBoard(string stored_board, AI_Player a,
                 HumanPlayer h);                    // resume game stored in json file
     void GenerateLookupTable();               // creates table of all possible
