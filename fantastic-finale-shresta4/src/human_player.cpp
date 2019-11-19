@@ -17,7 +17,7 @@ HumanPlayer::HumanPlayer(string i, char p, int current_wins) {
 }
 
 int HumanPlayer::GetNextMove() {
-    cout << endl << id << " turn. Enter move: ";
+    cout << endl << id << " turn. (-128 to save and end game.) Enter move: ";
     int move;
     try {
         cin >> move;

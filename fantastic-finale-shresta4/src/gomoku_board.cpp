@@ -1,13 +1,10 @@
 #include "gomoku_board.h"
 #include <algorithm>
-#include <fstream>
 #include <iostream>
-#include <json.hpp>
 #include <string>
 #include <vector>
 
 using namespace std;
-using json = nlohmann::json;
 
 GomokuBoard::GomokuBoard() {
     board =
@@ -23,33 +20,39 @@ GomokuBoard::GomokuBoard() {
     cout << "Select a user name: ";
     string user_name;
     cin >> user_name;
-    while (user_name.length() == 0 || user_name == "computer") {
+    while (user_name.length() == 0 || user_name == "computer" ||
+           user_name == "tie" || user_name == "no_result") {
         cout << endl << "Please enter a valid name/one that is not taken yet: ";
         cin >> user_name;
     }
-    cout << endl << "Do you want to be X or O?";
+    cout << endl << "Do you want to be X or O? ";
     char user_piece;
-    cin >> user_piece;
+    string entire_input;
+    cin >> entire_input;
+    user_piece = entire_input[0];
     while (user_piece != 'X' && user_piece != 'O') {
         cout << endl << "Please enter either X or O: ";
-        cin >> user_piece;
+        cin >> entire_input;
+        user_piece = entire_input[0];
     }
     char ai_piece;
     if (user_piece == 'X') {
         ai_piece = 'O';
     } else {
-        ai_piece = 'X'; 
-	}
+        ai_piece = 'X';
+    }
 
     human = HumanPlayer(user_name, user_piece, 0);
-    ai = AI_Player("computer", ai_piece, 0); 
+    ai = AI_Player("computer", ai_piece, 0);
     GenerateLookupTable();
 }
 
-GomokuBoard::GomokuBoard(string stored_board, AI_Player a, HumanPlayer h) {
+GomokuBoard::GomokuBoard(string user_name, char user_piece, int user_wins,
+                         string ai_name, char ai_piece, int ai_wins,
+                         string stored_board, string current_player) {
     board = stored_board;
-    ai = a;
-    human = h;
+    ai = AI_Player(ai_name, ai_piece, ai_wins);
+    human = HumanPlayer(user_name, user_piece, user_wins);
     GenerateLookupTable();
 }
 
@@ -223,22 +226,3 @@ ostream &operator<<(ostream &output, const GomokuBoard &gb) {
     output << endl;
     return output;
 }
-
-/*void GomokuBoard::WriteBoardToJson(string json_file) {
-    json j;
-    j["board"] = board;
-    j["player_1_id"] = player_1_id;
-    j["player_0_id"] = player_0_id;
-
-    ofstream file(json_file);
-    file << j << endl;
-    file.close();
-    cout << "Hello";
-
-        std::ifstream
-i("C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json");
-    json j2;
-    i >> j2;
-    cout << j2["board"];
-
-}*/
