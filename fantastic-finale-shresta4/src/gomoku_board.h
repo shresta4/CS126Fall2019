@@ -21,8 +21,7 @@ class GomokuBoard {
 
     GomokuBoard(); // starting game from scratch
     GomokuBoard(string user_name, char user_piece, int user_wins,
-                string ai_name, char ai_piece, int ai_wins, string stored_board,
-                string current_player);   // starting game from json
+                string ai_name, char ai_piece, int ai_wins, string stored_board);   // starting game from json
     void GenerateLookupTable();               // creates table of all possible
                                               // winning combinations
     bool PlacePiece(int loc,

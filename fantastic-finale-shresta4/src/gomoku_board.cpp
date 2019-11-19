@@ -7,13 +7,12 @@
 using namespace std;
 
 GomokuBoard::GomokuBoard() {
-    board =
+    board =  "......................................................................"
         "......................................................................"
         "......................................................................"
         "......................................................................"
         "......................................................................"
-        "......................................................................"
-        "...........";
+        "..........."; 
     ai = AI_Player();
 
     // create the user object
@@ -49,7 +48,7 @@ GomokuBoard::GomokuBoard() {
 
 GomokuBoard::GomokuBoard(string user_name, char user_piece, int user_wins,
                          string ai_name, char ai_piece, int ai_wins,
-                         string stored_board, string current_player) {
+                         string stored_board) {
     board = stored_board;
     ai = AI_Player(ai_name, ai_piece, ai_wins);
     human = HumanPlayer(user_name, user_piece, user_wins);

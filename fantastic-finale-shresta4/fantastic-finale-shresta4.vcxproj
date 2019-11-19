@@ -180,21 +180,19 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\ai_player.cpp" />
-    <ClCompile Include="src\human_player.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\ai_player.cpp" />
     <ClCompile Include="src\gomoku_board.cpp" />
+    <ClCompile Include="src\human_player.cpp" />
     <ClCompile Include="src\round.cpp" />
-    <ClCompile Include="test_gomoku_board.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Downloads\json.hpp" />
-    <ClInclude Include="player.h" />
-    <ClInclude Include="src\ai_player.h" />
-    <ClInclude Include="src\human_player.h" />
     <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\ai_player.h" />
     <ClInclude Include="src\gomoku_board.h" />
+    <ClInclude Include="src\human_player.h" />
+    <ClInclude Include="src\player.h" />
     <ClInclude Include="src\round.h" />
   </ItemGroup>
   <ItemGroup>
@@ -210,13 +208,12 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="saved_board.json" />
     <None Include="src\sample_board_test.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="icon.rc" />
+      <UserProperties src_4sample_3board_3test_1json__JsonSchema="http://json-schema.org/draft-04/schema" RESOURCE_FILE="icon.rc" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

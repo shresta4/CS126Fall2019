@@ -12,26 +12,56 @@ using json = nlohmann::json;
 
 //========================================================================
 int main() {
-    cout << "Hello" << endl;
-
-    GomokuBoard gb;
-    Round r; 
+    cout << "Resume saved game? (Y if yes): ";
     bool read_from_json = false;
-
-    if (!read_from_json) {
-        gb = GomokuBoard();
-        r = Round(gb.ai, gb.human, gb);
-    } else {
-        json j = ReadFromFile(
-            "C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-"
-            "shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json");
-        gb = GomokuBoard(j["user_name"], j["user_piece"], int(j["user_wins"]),
-                         j["ai_name"], j["ai_piece"], int(j["ai_wins"]),
-                         j["board"], j["current_player"]); 
-        r = Round(gb.ai, gb.human, gb, j["current_player"]); 
+    string response;
+    cin >> response;
+    if (response == "Y") {
+        read_from_json = true;
     }
 
-    r.PlayRound();
+    if (read_from_json) {
+        string json_file =
+            "C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-"
+            "shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json";
+        ifstream i(json_file);
+        json j;
+        i >> j;
+
+        string user_name = j["user_name"].get<string>();
+        char user_piece = j["user_piece"].get<char>();
+        int user_wins = j["user_wins"].get<int>();
+
+        string ai_name = j["ai_name"].get<string>();
+        char ai_piece = j["ai_piece"].get<char>();
+        int ai_wins = j["ai_wins"].get<int>();
+
+        string board = j["board"].get<string>();
+        string current_player = j["current_player"].get<string>();
+
+        GomokuBoard gb = GomokuBoard(user_name, user_piece, user_wins, ai_name,
+                                     ai_piece, ai_wins, board);
+       if (gb.GetWinner() != "no result") {
+            cout << endl
+                 << "Previous round completed. Generating new round... "
+                 << endl;
+            gb = GomokuBoard(user_name, user_piece, user_wins, ai_name,
+                             ai_piece, ai_wins, "......................................................................"
+        "......................................................................"
+        "......................................................................"
+        "......................................................................"
+        "......................................................................"
+                             "...........");
+        }
+        Round r = Round(gb.ai, gb.human, gb, current_player);
+        r.PlayRound();
+
+    } else {
+        GomokuBoard gb = GomokuBoard();
+        Round r = Round(gb.ai, gb.human, gb);
+        r.PlayRound();
+    }
+
     ofSetupOpenGL(1024, 768, OF_WINDOW);  // <-------- setup the GL context
 
     // this kicks off the running of my app
@@ -39,38 +69,3 @@ int main() {
     // pass in width and height too:
     ofRunApp(new ofApp());
 }
-
-json ReadFromFile(string json_file) {
-    ifstream i(json_file);
-    json j;
-    return j; 
-    /*string user_name = j["user_name"];
-    char user_piece = j["user_piece"];
-    int user_wins = j["user_wins"];
-    string ai_name = j["ai_name"];
-    char ai_piece = j["ai_piece"];
-    int ai_wins = j["ai_wins"];
-    string board = j["board"];
-    string current_player_id = j["current_player"]
-
-        GomokuBoard g = GomokuBoard*/
-}
-
-/*void GomokuBoard::WriteBoardToJson(string json_file) {
-    json j;
-    j["board"] = board;
-    j["player_1_id"] = player_1_id;
-    j["player_0_id"] = player_0_id;
-
-    ofstream file(json_file);
-    file << j << endl;
-    file.close();
-    cout << "Hello";
-
-        std::ifstream
-i("C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json");
-    json j2;
-    i >> j2;
-    cout << j2["board"];
-
-}*/

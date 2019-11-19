@@ -7,22 +7,19 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\ai_player.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\gomoku_board.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\human_player.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\ofApp.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="test_gomoku_board.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ai_player.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\human_player.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\round.cpp">
@@ -33,28 +30,24 @@
     <Filter Include="src">
       <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="tests">
-      <UniqueIdentifier>{800bbd5a-b1e1-4cc0-adba-dd0509fd1eb8}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\ai_player.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\gomoku_board.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\human_player.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ai_player.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\json.hpp" />
-    <ClInclude Include="src\human_player.h">
+    <ClInclude Include="src\player.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\round.h">
@@ -65,9 +58,6 @@
     <ResourceCompile Include="icon.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="saved_board.json">
-      <Filter>src</Filter>
-    </None>
     <None Include="src\sample_board_test.json">
       <Filter>src</Filter>
     </None>
