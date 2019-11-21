@@ -56,7 +56,6 @@ void Round::PlayRound() {
                 moved = gb.PlacePiece(potential_move, human.piece);
             } while (!moved);
             current_player_id = ai.id;
-            cout << "human turn, but skipping" << endl;
         }
     }
     cout << gb << endl;
