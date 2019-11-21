@@ -42,7 +42,7 @@ int main() {
         GomokuBoard gb = GomokuBoard(user_name, user_piece, user_wins, ai_name,
                                      ai_piece, ai_wins, board);
         cout << gb.board << "this was the current board";
-        if (gb.GetWinner() != "no result") {
+        if (gb.GetWinner() != "no_result") {
             cout << endl
                  << "Previous round completed. Generating new round... "
                  << endl;

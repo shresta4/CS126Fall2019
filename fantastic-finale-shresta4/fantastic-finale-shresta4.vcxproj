@@ -186,7 +186,9 @@
     <ClCompile Include="src\gomoku_board.cpp" />
     <ClCompile Include="src\human_player.cpp" />
     <ClCompile Include="src\round.cpp" />
-    <ClCompile Include="src\sample_board_test.json" />
+    <ClCompile Include="src\sample_board_test.json">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h" />
