@@ -16,10 +16,12 @@
 11/18/2019
 - Change player id to a string, change piece to a char
 - Accounting for invalid user input. 
-- Making a round run in the main method while letting the user define their 
+- Making a round run in the main method while letting the user define their name/piece
+
+11/19/2019
+- Reading/writing round to json 
 
 11/_ /2019
 - Make player abstract class and have AI and User extend from it 
-- Make the json read a round instead of a game 
 - Currently free style gomoku. Implement: standard gomoku. No overlines 
 - Make a file with constants "tie" "no result" etc etc. 
