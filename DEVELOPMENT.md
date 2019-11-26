@@ -21,6 +21,13 @@
 11/19/2019
 - Reading/writing round to json 
 
+11/20/2019
+- Excluding json from build
+- Making sure if json file has a finished game, it moves on to a new game 
+
+11/26/2019 
+- Making a board display and having user place pieces which snap into place. 
+
 11/_ /2019
 - Make player abstract class and have AI and User extend from it 
 - Currently free style gomoku. Implement: standard gomoku. No overlines 
