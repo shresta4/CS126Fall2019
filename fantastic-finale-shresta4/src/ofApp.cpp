@@ -48,13 +48,21 @@ void ofApp::mouseDragged(int x, int y, int button) {}
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
-    vector<int> new_coords = snapPoint(x, y);
+	// check if its in bounds 
+	if (x < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE +
+                    MARGIN &&
+            y < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE +
+                    MARGIN) {
+            vector<int> new_coords = snapPoint(x, y);
 
-    Circle c = Circle(new_coords[0], new_coords[1], BOARD_SIZE,
-                      currentPlayer * 255);  // color is indicated by 1 or 0
-    circles.push_back(c);
+            Circle c =
+                Circle(new_coords[0], new_coords[1], BOARD_SIZE,
+                       currentPlayer * 255);  // color is indicated by 1 or 0
+            circles.push_back(c);
 
-    currentPlayer = 1 - currentPlayer;
+            currentPlayer = 1 - currentPlayer;
+        }
+    
 }
 
 //--------------------------------------------------------------
