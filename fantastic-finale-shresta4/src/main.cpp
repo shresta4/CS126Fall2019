@@ -12,7 +12,7 @@ using json = nlohmann::json;
 
 //========================================================================
 int main() {
-    cout << "Resume saved game? (Y if yes): ";
+    /*cout << "Resume saved game? (Y if yes): ";
     bool read_from_json = false;
     string response;
     cin >> response;
@@ -67,9 +67,9 @@ int main() {
         GomokuBoard gb = GomokuBoard();
         Round r = Round(gb.ai, gb.human, gb);
         r.PlayRound();
-    }
+    }*/
 
-    ofSetupOpenGL(1024, 768, OF_WINDOW);  // <-------- setup the GL context
+    ofSetupOpenGL((BOARD_SIZE + MARGIN) * (BOARD_SIZE + MARGIN) * SCALE, (BOARD_SIZE + MARGIN) * (BOARD_SIZE + MARGIN) * SCALE, OF_WINDOW);  // <-------- setup the GL context
 
     // this kicks off the running of my app
     // can be OF_WINDOW or OF_FULLSCREEN
