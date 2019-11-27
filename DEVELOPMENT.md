@@ -27,7 +27,7 @@
 
 11/26/2019 
 - Making a board display and having user place pieces which snap into place. 
-- Incorporating a round into the board. 
+- Incorporating a round into the ofApp.cpp. 
 - Fixing winner detection
 
 11/_ /2019
