@@ -3,13 +3,16 @@
 #include "circle.h"
 #include "gomoku_board.h"
 #include "ofMain.h"
+#include "round.h"
 
 constexpr int SCALE = 2;
 constexpr int MARGIN = 4;
 
 class ofApp : public ofBaseApp {
    public:
-    int currentPlayer;
+    GomokuBoard gb = GomokuBoard(); 
+    Round r = Round(gb.ai, gb.human, gb);
+    int currentPlayer = 1; 
     vector<Circle> circles;
     void setup();
     void update();
@@ -30,4 +33,5 @@ class ofApp : public ofBaseApp {
     int convertPointToIndex(
         int x, int y);  // from coordinate point get index in board string
     vector<int> snapPoint(int x, int y);
+    vector<int> ofApp::convertIndexToPoint(int index); 
 };
