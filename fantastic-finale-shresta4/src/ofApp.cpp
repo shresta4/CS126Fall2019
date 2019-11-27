@@ -7,6 +7,9 @@ void ofApp::setup() {}
 
 //--------------------------------------------------------------
 void ofApp::update() {
+    if (gb.GetWinner() != "no_result") {
+        r.current_player_id = "no_player"; 
+	}
     if (r.current_player_id == r.ai.id) {
         int move = r.ai.GetNextMove(gb.board, r.human.piece, EMPTY_SPACE);
         gb.PlacePiece(move, r.ai.piece);
@@ -46,6 +49,7 @@ void ofApp::draw() {
 
     // text
     glPointSize(10);
+    ofSetColor(0, 0, 0);
     ofDrawBitmapString(
         "Gomoku!", ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2,
         (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 5);
@@ -60,9 +64,15 @@ void ofApp::draw() {
             ofDrawBitmapString(
                 "AI turn.",
                 ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2,
-                (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 11);
+                (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 8);
             Sleep(1000);
         }
+    } else {
+        ofSetColor(0, 0, 0);
+        ofDrawBitmapString(
+            "Game over. " + gb.GetWinner() + " wins.",
+            ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2,
+            (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 8);
     }
 }
 
@@ -80,6 +90,9 @@ void ofApp::mouseDragged(int x, int y, int button) {}
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
+    if (gb.GetWinner() != "no_result") {
+        r.current_player_id = "no_player";
+    }
     if (gb.GetWinner() == "no_result" && r.current_player_id == r.human.id) {
         // check if its in bounds
         if (x < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN &&
