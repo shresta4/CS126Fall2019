@@ -48,21 +48,17 @@ void ofApp::mouseDragged(int x, int y, int button) {}
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
-	// check if its in bounds 
-	if (x < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE +
-                    MARGIN &&
-            y < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE +
-                    MARGIN) {
-            vector<int> new_coords = snapPoint(x, y);
+    // check if its in bounds
+    if (x < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN &&
+        y < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) {
+        vector<int> new_coords = snapPoint(x, y);
+        convertPointToIndex(new_coords[0], new_coords[1]); 
+        Circle c = Circle(new_coords[0], new_coords[1], BOARD_SIZE,
+                          currentPlayer * 255);  // color is indicated by 1 or 0
+        circles.push_back(c);
 
-            Circle c =
-                Circle(new_coords[0], new_coords[1], BOARD_SIZE,
-                       currentPlayer * 255);  // color is indicated by 1 or 0
-            circles.push_back(c);
-
-            currentPlayer = 1 - currentPlayer;
-        }
-    
+        currentPlayer = 1 - currentPlayer;
+    }
 }
 
 //--------------------------------------------------------------
@@ -85,7 +81,10 @@ void ofApp::dragEvent(ofDragInfo dragInfo) {}
 
 int ofApp::convertPointToIndex(int x, int y) {
     // fix this
-    return (y * BOARD_SIZE + x);
+    int new_x = ((x - 0) - (x % (BOARD_SIZE + MARGIN))) / (BOARD_SIZE + MARGIN);
+    int new_y = ((y - 0) - (y % BOARD_SIZE + MARGIN)) / (BOARD_SIZE + MARGIN);
+    cout << (new_y * BOARD_SIZE + new_x) / 2 << endl; 
+    return (new_y * BOARD_SIZE + new_x) / 2;
 }
 
 vector<int> ofApp::snapPoint(int x, int y) {
@@ -98,6 +97,5 @@ vector<int> ofApp::snapPoint(int x, int y) {
     vector<int> coords;
     coords.push_back(new_x);
     coords.push_back(new_y);
-    cout << new_x << " " << new_y << endl; 
     return coords;
 }
