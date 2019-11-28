@@ -30,6 +30,9 @@
 - Incorporating a round into the ofApp.cpp. 
 - Fixing winner detection
 
+11/27/2019
+- Reading https://web.archive.org/web/20140411074912/http://chalmersgomoku.googlecode.com/files/allis1994.pdf to learn how to make the AI 
+
 11/_ /2019
 - Make player abstract class and have AI and User extend from it 
 - Currently free style gomoku. Implement: standard gomoku. No overlines 
