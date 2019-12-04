@@ -43,3 +43,4 @@
 - Add buttons for load json, save, restart, exit 
 - Read game from json 
 - Account for when there's no winner but the board is full 
+- Fix ending the game on time 
