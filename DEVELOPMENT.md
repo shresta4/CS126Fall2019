@@ -34,7 +34,8 @@
 - Reading https://web.archive.org/web/20140411074912/http://chalmersgomoku.googlecode.com/files/allis1994.pdf to learn how to make the AI 
 
 12/5/2019
-- Fixing parenthesis issues (was causing errors and the game wouldn't end at the right time) 
+- Fixing parenthesis issues (was causing errors and the game wouldn't end at the right time)
+- Making display update according to json 
 
 11/_ /2019
 - Make player abstract class and have AI and User extend from it 
