@@ -1,15 +1,20 @@
 #include "ofApp.h"
+#include <json.hpp>
 #include "circle.h"
 #include "gomoku_board.h"
 
-//--------------------------------------------------------------
-void ofApp::setup() {}
+using json = nlohmann::json;
 
 //--------------------------------------------------------------
-void ofApp::update() {
+void ofApp::setup() {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::update() { 
     if (gb.GetWinner() != "no_result") {
-        r.current_player_id = "no_player"; 
-	}
+        r.current_player_id = "no_player";
+    }
     if (r.current_player_id == r.ai.id) {
         int move = r.ai.GetNextMove(gb.board, r.human.piece, EMPTY_SPACE);
         gb.PlacePiece(move, r.ai.piece);
@@ -97,8 +102,12 @@ void ofApp::mousePressed(int x, int y, int button) {
         // check if its in bounds
         if (x < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN &&
             y < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) {
-            vector<int> new_coords = snapPoint(x, y);
+            cout << "original points " << x << " " << y << endl; 
+            vector<int> new_coords =
+                snapPoint(x, y);
             int index = convertPointToIndex(new_coords[0], new_coords[1]);
+            cout << "snapped to " << new_coords[0] << " " << new_coords[1]
+                 << " converted to index " << index << endl; 
 
             // have to check if that's a valid click
             bool moved = gb.PlacePiece(index, gb.human.piece);
@@ -111,6 +120,8 @@ void ofApp::mousePressed(int x, int y, int button) {
                 r.current_player_id = r.ai.id;
             }
         }
+
+        cout << gb << endl;
     }
 }
 
@@ -134,7 +145,7 @@ void ofApp::dragEvent(ofDragInfo dragInfo) {}
 
 int ofApp::convertPointToIndex(int x, int y) {  // from snap point
     int new_x = ((x - 0) - (x % (BOARD_SIZE + MARGIN))) / (BOARD_SIZE + MARGIN);
-    int new_y = ((y - 0) - (y % BOARD_SIZE + MARGIN)) / (BOARD_SIZE + MARGIN);
+    int new_y = ((y - 0) - (y % (BOARD_SIZE + MARGIN))) / (BOARD_SIZE + MARGIN);
     return (new_y * BOARD_SIZE + new_x) / 2;
 }
 
