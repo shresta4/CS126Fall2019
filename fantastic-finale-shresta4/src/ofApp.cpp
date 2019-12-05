@@ -7,11 +7,74 @@ using json = nlohmann::json;
 
 //--------------------------------------------------------------
 void ofApp::setup() {
+    cout << "Resume saved game from json? (Y for yes): " << endl;
+    string response;
+    cin >> response;
+    if (response == "Y") {
+        readFromJson();
+    }
+}
 
+void ofApp::readFromJson() {
+    string json_file =
+        "C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-"
+        "shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json";
+    ifstream i(json_file);
+    json j;
+    i >> j;
+
+    string user_name = j["user_name"].get<string>();
+    char user_piece = j["user_piece"].get<char>();
+    int user_wins = j["user_wins"].get<int>();
+
+    string ai_name = j["ai_name"].get<string>();
+    char ai_piece = j["ai_piece"].get<char>();
+    int ai_wins = j["ai_wins"].get<int>();
+
+    string board = j["board"].get<string>();
+    string current_player = j["current_player"].get<string>();
+
+    cout << user_name << " " << user_piece << " " << user_wins << " " << ai_name
+         << " " << ai_wins << " " << ai_piece << " " << ai_wins << " " << board
+         << current_player << endl;
+
+    gb = GomokuBoard(user_name, user_piece, user_wins, ai_name, ai_piece,
+                     ai_wins, board);
+
+    if (gb.GetWinner() != "no_result") {
+        cout << endl
+             << "Previous round completed. Generating new round... " << endl;
+        gb = GomokuBoard(user_name, user_piece, user_wins, ai_name, ai_piece,
+                         ai_wins,
+                         "................................................."
+                         "....................."
+                         "................................................."
+                         "....................."
+                         "................................................."
+                         "....................."
+                         "................................................."
+                         "....................."
+                         "................................................."
+                         "....................."
+                         "...........");
+    } else {  // add circles to circle vector
+        for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; i++) {
+            if (board[i] == user_piece) {
+                vector<int> coords = convertIndexToPoint(i);
+                Circle c = Circle(coords[0], coords[1], BOARD_SIZE, 255); //magic #
+                circles.push_back(c); 
+            } else if (board[i] == ai_piece) {
+                vector<int> coords = convertIndexToPoint(i);
+                Circle c = Circle(coords[0], coords[1], BOARD_SIZE, 0); //magic #
+                circles.push_back(c); 
+            }
+        }
+    }
 }
 
 //--------------------------------------------------------------
-void ofApp::update() { 
+void ofApp::update() {
+    // cout << "HELLO" << endl; 
     if (gb.GetWinner() != "no_result") {
         r.current_player_id = "no_player";
     }
@@ -95,6 +158,7 @@ void ofApp::mouseDragged(int x, int y, int button) {}
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
+    // cout << "MOUSE WAS PRESSED";
     if (gb.GetWinner() != "no_result") {
         r.current_player_id = "no_player";
     }
@@ -102,12 +166,11 @@ void ofApp::mousePressed(int x, int y, int button) {
         // check if its in bounds
         if (x < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN &&
             y < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) {
-            cout << "original points " << x << " " << y << endl; 
-            vector<int> new_coords =
-                snapPoint(x, y);
+            cout << "original points " << x << " " << y << endl;
+            vector<int> new_coords = snapPoint(x, y);
             int index = convertPointToIndex(new_coords[0], new_coords[1]);
             cout << "snapped to " << new_coords[0] << " " << new_coords[1]
-                 << " converted to index " << index << endl; 
+                 << " converted to index " << index << endl;
 
             // have to check if that's a valid click
             bool moved = gb.PlacePiece(index, gb.human.piece);
@@ -120,7 +183,7 @@ void ofApp::mousePressed(int x, int y, int button) {
                 r.current_player_id = r.ai.id;
             }
         }
-
+        cout << "number of circles " << circles.size() << endl; 
         cout << gb << endl;
     }
 }
