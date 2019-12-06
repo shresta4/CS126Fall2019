@@ -48,7 +48,6 @@
 - Currently free style gomoku. Implement: standard gomoku. No overlines 
 - Make a file with constants "tie" "no result" json file etc etc., Save no_player as a constant 
 - Add a delay before the AI plays 
-- Move title to the top of the screen 
-- Add buttons for load json, save, exit (ofxdatgui)
+- Add buttons for load json (ofxdatgui)
 - Json - make sure correct player is starting, Save to json file, try to make the read json aspect in the gomoku_board class
 - test cases 
