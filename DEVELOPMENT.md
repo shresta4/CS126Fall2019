@@ -46,7 +46,7 @@
 - Make player abstract class and have AI and User extend from it 
 - UI for name and piece
 - Currently free style gomoku. Implement: standard gomoku. No overlines 
-- Make a file with constants "tie" "no result" etc etc., Save no_player as a constant 
+- Make a file with constants "tie" "no result" json file etc etc., Save no_player as a constant 
 - Add a delay before the AI plays 
 - Move title to the top of the screen 
 - Add buttons for load json, save, exit (ofxdatgui)
