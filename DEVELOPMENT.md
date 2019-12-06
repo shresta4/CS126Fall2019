@@ -34,7 +34,8 @@
 - Reading https://web.archive.org/web/20140411074912/http://chalmersgomoku.googlecode.com/files/allis1994.pdf to learn how to make the AI 
 
 12/5/2019
-- Fixing parenthesis issues (was causing errors and the game wouldn't end at the right time) 
+- Fixing parenthesis issues (was causing errors and the game wouldn't end at the right time)
+- Making display update according to json 
 
 11/_ /2019
 - Make player abstract class and have AI and User extend from it 
@@ -44,6 +45,9 @@
 - Add a delay before the AI plays 
 - Move title to the top of the screen 
 - Add buttons for load json, save, restart, exit (ofxdatgui)
-- Read game from json 
+- Json - make sure correct player is starting, Save to json file, try to make the read json aspect in the gomoku_board class
 - Account for when there's no winner but the board is full 
-- Fix ending the game on time 
+- Ask color instead of X O
+- Remove magic numbers for circle colors (0 and 255) 
+- display wins when the player has won
+- test cases 
