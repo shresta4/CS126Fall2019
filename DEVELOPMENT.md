@@ -50,5 +50,4 @@
 - Ask color instead of X O
 - Remove magic numbers for circle colors (0 and 255) 
 - display wins when the player has won
-- abstract player class
 - test cases 
