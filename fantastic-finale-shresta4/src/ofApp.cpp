@@ -18,12 +18,15 @@ void ofApp::setup() {
     buttons.setup();
     ButtonPanel* panel = buttons.addButtonPanel("Menu");
     panel->addFlashItem("Reset", bReset);
+    panel->addFlashItem("Save Game", bSaveToJson);
+    panel->addFlashItem("Resume Saved Game", bResumeSavedGame);
 }
 
 void ofApp::readFromJson() {
     string json_file =
         "C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-"
         "shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json";
+
     ifstream i(json_file);
     json j;
     i >> j;
@@ -98,6 +101,17 @@ void ofApp::update() {
             "...."
             "...........";
         bReset = false;
+    } 
+
+	if (bSaveToJson) {
+        r.WriteRoundToJson(
+            "C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-"
+            "shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json"); 
+        bSaveToJson = false; 
+    }
+
+	if (bResumeSavedGame) {
+        bResumeSavedGame = false; 
     }
 
     if (gb.GetWinner() != "no_result") {

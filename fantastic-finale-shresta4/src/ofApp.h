@@ -12,6 +12,7 @@ constexpr int MARGIN = 4;
 constexpr int DISPLACE = 75;
 constexpr int MAX_COLOR = 255;
 constexpr int MIN_COLOR = 0;
+//string json_file = "C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json";
 
 using namespace std;
 
@@ -48,4 +49,6 @@ class ofApp : public ofBaseApp {
 
     ButtonManager buttons;
     bool bReset;
+    bool bSaveToJson;
+    bool bResumeSavedGame;
 };
