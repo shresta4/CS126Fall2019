@@ -45,6 +45,10 @@
 - Add a delay before the AI plays 
 - Move title to the top of the screen 
 - Add buttons for load json, save, restart, exit (ofxdatgui)
-- Read game from json 
+- Json - make sure correct player is starting, Save to json file, try to make the read json aspect in the gomoku_board class
 - Account for when there's no winner but the board is full 
-- Fix ending the game on time 
+- Ask color instead of X O
+- Remove magic numbers for circle colors (0 and 255) 
+- display wins when the player has won
+- abstract player class
+- test cases 
