@@ -61,12 +61,14 @@ void ofApp::readFromJson() {
         for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; i++) {
             if (board[i] == user_piece) {
                 vector<int> coords = convertIndexToPoint(i);
-                Circle c = Circle(coords[0], coords[1], BOARD_SIZE, 255); //magic #
-                circles.push_back(c); 
+                Circle c = Circle(coords[0], coords[1], BOARD_SIZE,
+                                  pieceToColorMap[user_piece]);
+                circles.push_back(c);
             } else if (board[i] == ai_piece) {
                 vector<int> coords = convertIndexToPoint(i);
-                Circle c = Circle(coords[0], coords[1], BOARD_SIZE, 0); //magic #
-                circles.push_back(c); 
+                Circle c = Circle(coords[0], coords[1], BOARD_SIZE,
+                                  pieceToColorMap[ai_piece]);
+                circles.push_back(c);
             }
         }
     }
@@ -74,7 +76,8 @@ void ofApp::readFromJson() {
 
 //--------------------------------------------------------------
 void ofApp::update() {
-    // cout << "HELLO" << endl; 
+    // cout << "HELLO" << endl;
+
     if (gb.GetWinner() != "no_result") {
         r.current_player_id = "no_player";
     }
@@ -85,7 +88,7 @@ void ofApp::update() {
         vector<int> coords = convertIndexToPoint(move);
 
         Circle c = Circle(coords[0], coords[1], BOARD_SIZE,
-                          0);  // color is indicated by 1 or 0 - CHANGE
+                          pieceToColorMap[r.ai.piece]);
         circles.push_back(c);
 
         r.current_player_id = r.human.id;
@@ -166,24 +169,24 @@ void ofApp::mousePressed(int x, int y, int button) {
         // check if its in bounds
         if (x < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN &&
             y < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) {
-            cout << "original points " << x << " " << y << endl;
+            // cout << "original points " << x << " " << y << endl;
             vector<int> new_coords = snapPoint(x, y);
             int index = convertPointToIndex(new_coords[0], new_coords[1]);
-            cout << "snapped to " << new_coords[0] << " " << new_coords[1]
-                 << " converted to index " << index << endl;
+            // cout << "snapped to " << new_coords[0] << " " << new_coords[1]
+            //     << " converted to index " << index << endl;
 
             // have to check if that's a valid click
             bool moved = gb.PlacePiece(index, gb.human.piece);
             if (moved) {
                 convertPointToIndex(new_coords[0], new_coords[1]);
                 Circle c = Circle(new_coords[0], new_coords[1], BOARD_SIZE,
-                                  255);  // color is indicated by 1 or 0
+                                  pieceToColorMap[r.human.piece]);
                 circles.push_back(c);
 
                 r.current_player_id = r.ai.id;
             }
         }
-        cout << "number of circles " << circles.size() << endl; 
+        // cout << "number of circles " << circles.size() << endl;
         cout << gb << endl;
     }
 }
