@@ -40,7 +40,7 @@
 12/6/2019
 - Removed magic numbers for circle colors (0 and 225), Associated colors with X and O
 - Text color changes based on whose turn it is (in case they forgot which color piece is theirs.) 
-- Used ofxButtons to create reset button
+- Used ofxButtons to create reset, save buttons
 
 11/_ /2019
 - Make player abstract class and have AI and User extend from it 
