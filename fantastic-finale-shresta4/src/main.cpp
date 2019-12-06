@@ -69,7 +69,7 @@ int main() {
         r.PlayRound();
     }*/
 
-    ofSetupOpenGL((BOARD_SIZE + MARGIN) * (BOARD_SIZE + MARGIN) * SCALE, (BOARD_SIZE + MARGIN) * (BOARD_SIZE + MARGIN) * SCALE, OF_WINDOW);  // <-------- setup the GL context
+    ofSetupOpenGL((BOARD_SIZE + MARGIN) * (BOARD_SIZE + MARGIN) * SCALE + DISPLACE, (BOARD_SIZE + MARGIN) * (BOARD_SIZE + MARGIN) * SCALE + DISPLACE, OF_WINDOW);  // <-------- setup the GL context
 
     // this kicks off the running of my app
     // can be OF_WINDOW or OF_FULLSCREEN

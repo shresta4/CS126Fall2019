@@ -100,7 +100,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
@@ -140,7 +140,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
@@ -163,7 +163,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs;..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
@@ -190,6 +190,19 @@
     <ClCompile Include="src\sample_board_test.json">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonManager.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ButtonPanel.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ColorPickerItem.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\FlashItem.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ListItem.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\SelectionItem.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\SliderItem.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ToggleItem.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\SimpleButton.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs\tinyxml.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h" />
@@ -199,6 +212,18 @@
     <ClInclude Include="src\human_player.h" />
     <ClInclude Include="src\player.h" />
     <ClInclude Include="src\round.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonManager.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ButtonPanel.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ColorPickerItem.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\FlashItem.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ListItem.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\SelectionItem.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\SliderItem.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ToggleItem.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ofxButtons.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\SimpleButton.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs\tinyxml.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

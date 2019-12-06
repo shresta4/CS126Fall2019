@@ -31,10 +31,70 @@
 		<ClCompile Include="src\sample_board_test.json">
 			<Filter>src</Filter>
 		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonManager.cpp">
+			<Filter>addons\ofxButtons\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ButtonPanel.cpp">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ColorPickerItem.cpp">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\FlashItem.cpp">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ListItem.cpp">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\SelectionItem.cpp">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\SliderItem.cpp">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ToggleItem.cpp">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\SimpleButton.cpp">
+			<Filter>addons\ofxButtons\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\src\ofxXmlSettings.cpp">
+			<Filter>addons\ofxXmlSettings\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs\tinyxml.cpp">
+			<Filter>addons\ofxXmlSettings\libs</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs\tinyxmlerror.cpp">
+			<Filter>addons\ofxXmlSettings\libs</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs\tinyxmlparser.cpp">
+			<Filter>addons\ofxXmlSettings\libs</Filter>
+		</ClCompile>
 	</ItemGroup>
 	<ItemGroup>
 		<Filter Include="src">
 			<UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons">
+			<UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxButtons">
+			<UniqueIdentifier>{47399244-FBE9-F58D-49C4-C9A7}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxButtons\src">
+			<UniqueIdentifier>{8BF2C575-CD3A-A55E-958E-24B1}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxButtons\src\ButtonPanel">
+			<UniqueIdentifier>{4CECDF0A-FC28-14A8-C3E8-E5AB}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxXmlSettings">
+			<UniqueIdentifier>{877F005D-13E6-0592-1D97-F2E3}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxXmlSettings\src">
+			<UniqueIdentifier>{CCB2AC63-49D2-977C-CFE8-AEAD}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxXmlSettings\libs">
+			<UniqueIdentifier>{687714A8-1662-FA1C-261F-50F0}</UniqueIdentifier>
 		</Filter>
 	</ItemGroup>
 	<ItemGroup>
@@ -61,6 +121,42 @@
 		</ClInclude>
 		<ClInclude Include="src\round.h">
 			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonManager.h">
+			<Filter>addons\ofxButtons\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ButtonPanel.h">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ColorPickerItem.h">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\FlashItem.h">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ListItem.h">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\SelectionItem.h">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\SliderItem.h">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ButtonPanel\ToggleItem.h">
+			<Filter>addons\ofxButtons\src\ButtonPanel</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\ofxButtons.h">
+			<Filter>addons\ofxButtons\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxButtons\src\SimpleButton.h">
+			<Filter>addons\ofxButtons\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\src\ofxXmlSettings.h">
+			<Filter>addons\ofxXmlSettings\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs\tinyxml.h">
+			<Filter>addons\ofxXmlSettings\libs</Filter>
 		</ClInclude>
 	</ItemGroup>
 	<ItemGroup>

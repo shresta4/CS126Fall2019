@@ -24,7 +24,7 @@ GomokuBoard::GomokuBoard() {
         cout << endl << "Please enter a valid name/one that is not taken yet: ";
         cin >> user_name;
     }
-    cout << endl << "Do you want to be X or O? ";
+    cout << endl << "Do you want to be X (first player) or O (second player)? ";
     char user_piece;
     string entire_input;
     cin >> entire_input;

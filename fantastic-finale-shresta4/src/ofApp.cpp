@@ -2,6 +2,7 @@
 #include <json.hpp>
 #include "circle.h"
 #include "gomoku_board.h"
+#include "ofApp.h"
 
 using json = nlohmann::json;
 
@@ -13,6 +14,10 @@ void ofApp::setup() {
     if (response == "Y") {
         readFromJson();
     }
+
+    buttons.setup();
+    ButtonPanel* panel = buttons.addButtonPanel("Menu");
+    panel->addFlashItem("Reset", bReset);
 }
 
 void ofApp::readFromJson() {
@@ -78,6 +83,23 @@ void ofApp::readFromJson() {
 void ofApp::update() {
     // cout << "HELLO" << endl;
 
+    if (bReset) {
+        circles.clear();
+        r.gb.board =
+            ".................................................................."
+            "...."
+            ".................................................................."
+            "...."
+            ".................................................................."
+            "...."
+            ".................................................................."
+            "...."
+            ".................................................................."
+            "...."
+            "...........";
+        bReset = false;
+    }
+
     if (gb.GetWinner() != "no_result") {
         r.current_player_id = "no_player";
     }
@@ -103,9 +125,9 @@ void ofApp::draw() {
     for (int i = 0; i < BOARD_SIZE - 1; i++) {
         for (int j = 0; j < BOARD_SIZE - 1; j++) {
             glm::vec3 p;
-            p.x = i * (BOARD_SIZE + MARGIN) * SCALE +
-                  BOARD_SIZE;  // column by column
-            p.y = j * (BOARD_SIZE + MARGIN) * SCALE + BOARD_SIZE;
+            p.x = i * (BOARD_SIZE + MARGIN) * SCALE + BOARD_SIZE +
+                  DISPLACE;  // column by column
+            p.y = j * (BOARD_SIZE + MARGIN) * SCALE + BOARD_SIZE + DISPLACE;
             ofDrawRectangle(p, BOARD_SIZE * SCALE + MARGIN,
                             BOARD_SIZE * SCALE + MARGIN);  // Draw the rectangle
         }
@@ -122,29 +144,42 @@ void ofApp::draw() {
     glPointSize(10);
     ofSetColor(0, 0, 0);
     ofDrawBitmapString(
-        "Gomoku!", ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2,
-        (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 5);
+        "Gomoku!",
+        ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2 + DISPLACE,
+        (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 5 + DISPLACE);
 
     if (gb.GetWinner() == "no_result") {
         if (r.current_player_id == r.human.id) {
+            ofSetColor(pieceToColorMap[r.human.piece],
+                       pieceToColorMap[r.human.piece],
+                       pieceToColorMap[r.human.piece]);
             ofDrawBitmapString(
                 "Your turn.",
-                ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2,
-                (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 8);
+                ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2 +
+                    DISPLACE,
+                (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 8 +
+                    DISPLACE);
         } else {
+            ofSetColor(pieceToColorMap[r.ai.piece], pieceToColorMap[r.ai.piece],
+                       pieceToColorMap[r.ai.piece]);
             ofDrawBitmapString(
                 "AI turn.",
-                ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2,
-                (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 8);
+                ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2 +
+                    DISPLACE,
+                (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 8 +
+                    DISPLACE);
             Sleep(1000);
         }
     } else {
         ofSetColor(0, 0, 0);
         ofDrawBitmapString(
             "Game over. " + gb.GetWinner() + " wins.",
-            ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2,
-            (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 8);
+            ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2 +
+                DISPLACE,
+            (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 8 +
+                DISPLACE);
     }
+    ofSetColor(0, 0, 0);
 }
 
 //--------------------------------------------------------------
@@ -167,8 +202,11 @@ void ofApp::mousePressed(int x, int y, int button) {
     }
     if (gb.GetWinner() == "no_result" && r.current_player_id == r.human.id) {
         // check if its in bounds
-        if (x < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN &&
-            y < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) {
+        if (x > DISPLACE && y > DISPLACE &&
+            x < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN +
+                    DISPLACE &&
+            y < (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN +
+                    DISPLACE) {
             // cout << "original points " << x << " " << y << endl;
             vector<int> new_coords = snapPoint(x, y);
             int index = convertPointToIndex(new_coords[0], new_coords[1]);
@@ -210,8 +248,10 @@ void ofApp::gotMessage(ofMessage msg) {}
 void ofApp::dragEvent(ofDragInfo dragInfo) {}
 
 int ofApp::convertPointToIndex(int x, int y) {  // from snap point
-    int new_x = ((x - 0) - (x % (BOARD_SIZE + MARGIN))) / (BOARD_SIZE + MARGIN);
-    int new_y = ((y - 0) - (y % (BOARD_SIZE + MARGIN))) / (BOARD_SIZE + MARGIN);
+    int new_x =
+        ((x - DISPLACE) - (x % (BOARD_SIZE + MARGIN))) / (BOARD_SIZE + MARGIN);
+    int new_y =
+        ((y - DISPLACE) - (y % (BOARD_SIZE + MARGIN))) / (BOARD_SIZE + MARGIN);
     return (new_y * BOARD_SIZE + new_x) / 2;
 }
 
@@ -220,18 +260,20 @@ vector<int> ofApp::convertIndexToPoint(int index) {
     int x_part = index % BOARD_SIZE;
     int y_part = index / BOARD_SIZE;
     vector<int> coords;
-    coords.push_back(x_part * (BOARD_SIZE + MARGIN) * SCALE + BOARD_SIZE);
-    coords.push_back(y_part * (BOARD_SIZE + MARGIN) * SCALE + BOARD_SIZE);
+    coords.push_back(x_part * (BOARD_SIZE + MARGIN) * SCALE + BOARD_SIZE +
+                     DISPLACE);
+    coords.push_back(y_part * (BOARD_SIZE + MARGIN) * SCALE + BOARD_SIZE +
+                     DISPLACE);
     return coords;
 }
 
 vector<int> ofApp::snapPoint(int x, int y) {
-    int new_x = (x + BOARD_SIZE) -
-                (x % ((BOARD_SIZE + MARGIN) *
-                      SCALE));  // (x - (MARGIN / MARGIN)) / SCALE - MARGIN;
-    int new_y = (y + BOARD_SIZE) -
-                (y % ((BOARD_SIZE + MARGIN) *
-                      SCALE));  // (y - (MARGIN / MARGIN)) / SCALE - MARGIN;
+    int modx = x - DISPLACE;
+    int mody = y - DISPLACE;
+    int new_x = (modx + BOARD_SIZE) - (modx % ((BOARD_SIZE + MARGIN) * SCALE)) +
+                DISPLACE;  // (x - (MARGIN / MARGIN)) / SCALE - MARGIN;
+    int new_y = (mody + BOARD_SIZE) - (mody % ((BOARD_SIZE + MARGIN) * SCALE)) +
+                DISPLACE;  // (y - (MARGIN / MARGIN)) / SCALE - MARGIN;
     vector<int> coords;
     coords.push_back(new_x);
     coords.push_back(new_y);

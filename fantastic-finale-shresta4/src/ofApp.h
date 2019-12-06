@@ -1,17 +1,19 @@
 #pragma once
 
+#include <ofxButtons.h>
+#include <map>
 #include "circle.h"
 #include "gomoku_board.h"
 #include "ofMain.h"
 #include "round.h"
-#include <map>
 
 constexpr int SCALE = 2;
 constexpr int MARGIN = 4;
+constexpr int DISPLACE = 75;
 constexpr int MAX_COLOR = 255;
 constexpr int MIN_COLOR = 0;
 
-using namespace std; 
+using namespace std;
 
 class ofApp : public ofBaseApp {
    public:
@@ -19,7 +21,9 @@ class ofApp : public ofBaseApp {
     Round r = Round(gb.ai, gb.human, gb);
     int currentPlayer = 1;
     vector<Circle> circles;
-    map<char, int> pieceToColorMap = {{'X', MIN_COLOR}, {'O', MAX_COLOR}}; // piece to color mapping, X = black = first player
+    map<char, int> pieceToColorMap = {
+        {'X', MIN_COLOR},
+        {'O', MAX_COLOR}};  // piece to color mapping, X = black = first player
     void setup();
     void update();
     void draw();
@@ -41,4 +45,7 @@ class ofApp : public ofBaseApp {
         int x, int y);  // from coordinate point get index in board string
     vector<int> snapPoint(int x, int y);
     vector<int> ofApp::convertIndexToPoint(int index);
+
+    ButtonManager buttons;
+    bool bReset;
 };
