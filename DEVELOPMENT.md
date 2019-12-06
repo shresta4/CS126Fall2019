@@ -51,3 +51,4 @@
 - Add buttons for load json (ofxdatgui)
 - Json - make sure correct player is starting, Save to json file, try to make the read json aspect in the gomoku_board class
 - test cases 
+- Bug: allow game to restart even after game finishes
