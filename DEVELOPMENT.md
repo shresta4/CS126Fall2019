@@ -39,17 +39,14 @@
 
 12/6/2019
 - Removed magic numbers for circle colors (0 and 225), Associated colors with X and O
+- Text color changes based on whose turn it is (in case they forgot which color piece is theirs.) 
 
 11/_ /2019
 - Make player abstract class and have AI and User extend from it 
 - Currently free style gomoku. Implement: standard gomoku. No overlines 
 - Make a file with constants "tie" "no result" etc etc., Save no_player as a constant 
-- Have the user pick a color instead of X or O
 - Add a delay before the AI plays 
 - Move title to the top of the screen 
 - Add buttons for load json, save, restart, exit (ofxdatgui)
 - Json - make sure correct player is starting, Save to json file, try to make the read json aspect in the gomoku_board class
-- Account for when there's no winner but the board is full 
-- Remove magic numbers for circle colors (0 and 255) 
-- display wins when the player has won
 - test cases 
