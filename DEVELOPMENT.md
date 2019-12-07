@@ -49,3 +49,4 @@
 - Add a delay before the AI plays 
 - Make AI
 - test cases 
+- Fix error with lookup table
