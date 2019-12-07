@@ -47,6 +47,5 @@
 - UI for name and piece
 - Make a file with constants "tie" "no result" json file etc etc., Save no_player as a constant 
 - Add a delay before the AI plays 
-- Add buttons for load json (ofxdatgui)
-- Json - make sure correct player is starting, Save to json file
+- Make AI
 - test cases 
