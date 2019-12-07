@@ -41,12 +41,12 @@
 - Removed magic numbers for circle colors (0 and 225), Associated colors with X and O
 - Text color changes based on whose turn it is (in case they forgot which color piece is theirs.) 
 - Used ofxButtons to create reset, save buttons
+- Made sure reset works after the game ends 
 
 11/_ /2019 
 - UI for name and piece
 - Make a file with constants "tie" "no result" json file etc etc., Save no_player as a constant 
 - Add a delay before the AI plays 
 - Add buttons for load json (ofxdatgui)
-- Json - make sure correct player is starting, Save to json file, try to make the read json aspect in the gomoku_board class
+- Json - make sure correct player is starting, Save to json file
 - test cases 
-- Bug: allow game to restart even after game finishes
