@@ -8,7 +8,7 @@ using json = nlohmann::json;
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-    cout << "Resume saved game from json? (Y for yes): " << endl;
+    cout << "Resume saved game from json? (Y for yes): ";
     string response;
     cin >> response;
     if (response == "Y") {
@@ -86,32 +86,49 @@ void ofApp::readFromJson() {
 void ofApp::update() {
     // cout << "HELLO" << endl;
 
+    ofSetWindowTitle("Free style Gomoku");
+
     if (bReset) {
         circles.clear();
-        r.gb.board =
-            ".................................................................."
-            "...."
-            ".................................................................."
-            "...."
-            ".................................................................."
-            "...."
-            ".................................................................."
-            "...."
-            ".................................................................."
-            "...."
-            "...........";
-        bReset = false;
-    } 
+        gb.board = "......................................................................"
+        "......................................................................"
+        "......................................................................"
+        "......................................................................"
+        "......................................................................"
+             "..........."; 
 
-	if (bSaveToJson) {
-        r.WriteRoundToJson(
-            "C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-"
-            "shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json"); 
-        bSaveToJson = false; 
+		// set first player
+        if (gb.human.piece == 'X') {
+            r.current_player_id = gb.human.id; 
+        } else {
+            int move = r.ai.GetNextMove(gb.board, r.human.piece, EMPTY_SPACE);
+            gb.PlacePiece(move, r.ai.piece);
+
+            vector<int> coords = convertIndexToPoint(move);
+
+            Circle c = Circle(coords[0], coords[1], BOARD_SIZE,
+                              pieceToColorMap[r.ai.piece]);
+            circles.push_back(c);
+
+            r.current_player_id = r.human.id;
+
+            r.current_player_id = gb.ai.id; 
+		}
+        
+       
+        // r = Round(r.ai, r.human, r.gb);
+        bReset = false;
     }
 
-	if (bResumeSavedGame) {
-        bResumeSavedGame = false; 
+    if (bSaveToJson) {
+        r.WriteRoundToJson(
+            "C:\\Users\\Shresta\\source\\repos\\CS126FA19\\fantastic-finale-"
+            "shresta4\\fantastic-finale-shresta4\\src\\sample_board_test.json");
+        bSaveToJson = false;
+    }
+
+    if (bResumeSavedGame) {
+        bResumeSavedGame = false;
     }
 
     if (gb.GetWinner() != "no_result") {
@@ -157,10 +174,10 @@ void ofApp::draw() {
     // text
     glPointSize(10);
     ofSetColor(0, 0, 0);
-    ofDrawBitmapString(
+    /*ofDrawBitmapString(
         "Gomoku!",
         ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2 + DISPLACE,
-        (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 5 + DISPLACE);
+        (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 5 + DISPLACE);*/
 
     if (gb.GetWinner() == "no_result") {
         if (r.current_player_id == r.human.id) {
@@ -210,7 +227,7 @@ void ofApp::mouseDragged(int x, int y, int button) {}
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
-    // cout << "MOUSE WAS PRESSED";
+    cout << "MOUSE WAS PRESSED";
     if (gb.GetWinner() != "no_result") {
         r.current_player_id = "no_player";
     }
