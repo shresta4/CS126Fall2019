@@ -43,10 +43,11 @@
 - Used ofxButtons to create reset, save buttons
 - Made sure reset works after the game ends 
 
+12/10/2019
+- Make AI using Minimax algorithm
+- Test cases
+
 11/_ /2019 
 - UI for name and piece
-- Make a file with constants "tie" "no result" json file etc etc., Save no_player as a constant 
-- Add a delay before the AI plays 
-- Add buttons for load json (ofxdatgui)
-- Json - make sure correct player is starting, Save to json file
-- test cases 
+- Make AI faster, place my piece before AI does
+- Fix error with lookup table
