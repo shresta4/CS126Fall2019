@@ -6,9 +6,9 @@
 #include "human_player.h"
 
 using namespace std;
-constexpr int BOARD_SIZE = 19;
-constexpr int GOAL = 5;
-constexpr char EMPTY_SPACE = '.';
+//constexpr int BOARD_SIZE = 19;
+//constexpr int GOAL = 5;
+//constexpr char EMPTY_SPACE = '.';
 // string tie_code = "Tie.";
 // string no_result = "No result.";
 

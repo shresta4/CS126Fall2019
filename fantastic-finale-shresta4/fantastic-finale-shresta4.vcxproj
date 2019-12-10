@@ -180,6 +180,8 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ai_player_tests.cpp" />
+    <ClCompile Include="gomoku_board_tests.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\ai_player.cpp" />
@@ -205,6 +207,7 @@
     <ClCompile Include="..\..\..\..\..\..\..\Shresta_downloads\of_v0.10.1_vs2017_release\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="catch.hpp" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\ai_player.h" />
     <ClInclude Include="src\circle.h" />

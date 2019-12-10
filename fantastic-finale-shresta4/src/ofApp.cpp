@@ -19,7 +19,7 @@ void ofApp::setup() {
     ButtonPanel* panel = buttons.addButtonPanel("Menu");
     panel->addFlashItem("Reset", bReset);
     panel->addFlashItem("Save Game", bSaveToJson);
-    panel->addFlashItem("Resume Saved Game", bResumeSavedGame);
+    // panel->addFlashItem("Resume Saved Game", bResumeSavedGame);
 }
 
 void ofApp::readFromJson() {
@@ -42,9 +42,10 @@ void ofApp::readFromJson() {
     string board = j["board"].get<string>();
     string current_player = j["current_player"].get<string>();
 
-    cout << user_name << " " << user_piece << " " << user_wins << " " << ai_name
+    /*cout << user_name << " " << user_piece << " " << user_wins << " " <<
+       ai_name
          << " " << ai_wins << " " << ai_piece << " " << ai_wins << " " << board
-         << current_player << endl;
+         << current_player << endl;*/
 
     gb = GomokuBoard(user_name, user_piece, user_wins, ai_name, ai_piece,
                      ai_wins, board);
@@ -84,22 +85,32 @@ void ofApp::readFromJson() {
 
 //--------------------------------------------------------------
 void ofApp::update() {
-    // cout << "HELLO" << endl;
-
     ofSetWindowTitle("Free style Gomoku");
+
+	ofFill();
+    for (Circle c : circles) {
+        ofSetColor(c.color, c.color, c.color);
+        ofDrawCircle(c.x, c.y, c.radius);
+    }
 
     if (bReset) {
         circles.clear();
-        gb.board = "......................................................................"
-        "......................................................................"
-        "......................................................................"
-        "......................................................................"
-        "......................................................................"
-             "..........."; 
+        gb.board =
+            ".................................................................."
+            "...."
+            ".................................................................."
+            "...."
+            ".................................................................."
+            "...."
+            ".................................................................."
+            "...."
+            ".................................................................."
+            "...."
+            "...........";
 
-		// set first player
+        // set first player
         if (gb.human.piece == 'X') {
-            r.current_player_id = gb.human.id; 
+            r.current_player_id = gb.human.id;
         } else {
             int move = r.ai.GetNextMove(gb.board, r.human.piece, EMPTY_SPACE);
             gb.PlacePiece(move, r.ai.piece);
@@ -112,11 +123,8 @@ void ofApp::update() {
 
             r.current_player_id = r.human.id;
 
-            r.current_player_id = gb.ai.id; 
-		}
-        
-       
-        // r = Round(r.ai, r.human, r.gb);
+            r.current_player_id = gb.ai.id;
+        }
         bReset = false;
     }
 
@@ -128,6 +136,8 @@ void ofApp::update() {
     }
 
     if (bResumeSavedGame) {
+        // readFromJson();
+
         bResumeSavedGame = false;
     }
 
@@ -150,6 +160,7 @@ void ofApp::update() {
 
 //--------------------------------------------------------------
 void ofApp::draw() {
+    cout << "draw" << endl; 
     // draw board
     ofNoFill();
     ofSetColor(0, 0, 0);
@@ -227,7 +238,7 @@ void ofApp::mouseDragged(int x, int y, int button) {}
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
-    cout << "MOUSE WAS PRESSED";
+    cout << gb << endl << endl;
     if (gb.GetWinner() != "no_result") {
         r.current_player_id = "no_player";
     }
@@ -256,7 +267,7 @@ void ofApp::mousePressed(int x, int y, int button) {
             }
         }
         // cout << "number of circles " << circles.size() << endl;
-        cout << gb << endl;
+        // cout << gb << endl;
     }
 }
 
@@ -302,9 +313,9 @@ vector<int> ofApp::snapPoint(int x, int y) {
     int modx = x - DISPLACE;
     int mody = y - DISPLACE;
     int new_x = (modx + BOARD_SIZE) - (modx % ((BOARD_SIZE + MARGIN) * SCALE)) +
-                DISPLACE;  // (x - (MARGIN / MARGIN)) / SCALE - MARGIN;
+                DISPLACE;
     int new_y = (mody + BOARD_SIZE) - (mody % ((BOARD_SIZE + MARGIN) * SCALE)) +
-                DISPLACE;  // (y - (MARGIN / MARGIN)) / SCALE - MARGIN;
+                DISPLACE;
     vector<int> coords;
     coords.push_back(new_x);
     coords.push_back(new_y);

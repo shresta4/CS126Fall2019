@@ -7,12 +7,13 @@
 using namespace std;
 
 GomokuBoard::GomokuBoard() {
-    board =  "......................................................................"
+    board =
         "......................................................................"
         "......................................................................"
         "......................................................................"
         "......................................................................"
-        "..........."; 
+        "......................................................................"
+        "...........";
     ai = AI_Player();
 
     // create the user object
@@ -182,6 +183,7 @@ bool GomokuBoard::PlacePiece(int loc, char player_piece) {
         return false;
     } else {
         board[loc] = player_piece;
+        return true;
     }
 }
 
@@ -206,6 +208,10 @@ bool GomokuBoard::PlayerWins(char player_piece) {
             }
         }
         if (win) {
+            /* cout << lookup[i][0] << " " << lookup[i][1] << " " <<
+               lookup[i][2]
+                 << " " << lookup[i][3] << " " << lookup[i][4] << " "
+                 << " winning combo! " << endl; */
             return true;
         }
     }
