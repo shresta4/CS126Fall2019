@@ -25,9 +25,10 @@ AI_Player::AI_Player(string i, char p, int current_wins) {
 }
 
 int AI_Player::GetNextMove(
-    string board, int opponent_piece,
+    const string &board, int opponent_piece,
     char EMPTY_SPACE) {  // currently returns next available
-    Minimax(board, piece, 2, true, opp_piece);
+    cout << "Getting next ai move" << endl; 
+    Minimax(board, piece, 3, true, opp_piece);
     if (board[best_move] == EMPTY_SPACE) {
         return best_move;
     }
@@ -47,7 +48,7 @@ void AI_Player::AddWin() { wins++; }
 /** BASIC STRATEGY **/
 // look for winning combos with a piece already in and return the one with the
 // highest chance (4 pieces, 3 pieces, etc.) ---- outdated
-int AI_Player::BestChancePosition(string board, int opponent_piece) {
+/*int AI_Player::BestChancePosition(string board, int opponent_piece) {
     vector<int> best_vector = lookup[0];
     int max_pieces_placed = 0;
 
@@ -76,9 +77,10 @@ int AI_Player::BestChancePosition(string board, int opponent_piece) {
     }
     return 0;
 }
+*/
 
 /** MINIMAX **/
-int AI_Player::HeuristicCalculator(string board, char player, char opponent) {
+int AI_Player::HeuristicCalculator(const string &board, char player, char opponent) {
     int value = 0;
     for (int i = 0; i < lookup.size(); i++) {
         vector<int> combo = lookup[i];
@@ -128,7 +130,7 @@ int AI_Player::HeuristicCalculator(string board, char player, char opponent) {
     return value;
 }
 
-vector<int> AI_Player::NextMoves(string board, char player, char opponent) {
+vector<int> AI_Player::NextMoves(const string &board, char player, char opponent) {
     vector<int> moves;
     for (int i = 0; i < lookup.size(); i++) {
         bool consider = false;
@@ -142,7 +144,7 @@ vector<int> AI_Player::NextMoves(string board, char player, char opponent) {
             for (int j = 0; j < combo.size(); j++) {
                 if (board[combo[j]] == EMPTY_SPACE &&
                     (std::find(moves.begin(), moves.end(), combo[j]) ==
-                     moves.end())) {
+                     moves.end()) && moves.size() <= 10) { //magic number
                     moves.push_back(combo[j]);
                 }
             }
@@ -153,23 +155,26 @@ vector<int> AI_Player::NextMoves(string board, char player, char opponent) {
 
 int AI_Player::Minimax(string board, char player, int depth,
                        bool maximizing_player, char opponent) {
-    cout << depth << endl;
+    //cout << depth << endl;
     int best_value = INT_MIN;
     if (depth == 0) {  // or is terminal node ????????
         int h = HeuristicCalculator(board, player, opponent);
-        cout << "Heuristic: " << h << endl;
+       // cout << "Heuristic: " << h << endl;
         return h;
     }
     if (maximizing_player) {
         best_value = INT_MIN;
         // make a list of all valid moves (Basically everything with "."
         vector<int> good_moves = NextMoves(board, player, opponent);
+        cout << good_moves.size() << endl; 
         for (int i = 0; i < good_moves.size(); i++) {
             int pos = good_moves[i];
             if (board[pos] == EMPTY_SPACE) {  // if valid move
-                string temporary_board = MakeTemporaryMove(board, player, pos);
-                int v = Minimax(temporary_board, opponent, depth - 1, false,
+                //string temporary_board = MakeTemporaryMove(board, player, pos);
+                board[pos] = player; 
+                int v = Minimax(board, opponent, depth - 1, false,
                                 player);
+                board[pos] = EMPTY_SPACE; 
                 if (v > best_value) {
                     best_value = v;
                     best_move = pos;
@@ -179,12 +184,15 @@ int AI_Player::Minimax(string board, char player, int depth,
     } else {
         best_value = INT_MAX;
         vector<int> good_moves = NextMoves(board, player, opponent);
+        cout << good_moves.size() << endl; 
         for (int i = 0; i < good_moves.size(); i++) {
             int pos = good_moves[i];
             if (board[pos] == EMPTY_SPACE) {
-                string temporary_board = MakeTemporaryMove(board, player, pos);
+                //string temporary_board = MakeTemporaryMove(board, player, pos);
+                board[pos] = player; 
                 int v =
-                    Minimax(temporary_board, opponent, depth - 1, true, player);
+                    Minimax(board, opponent, depth - 1, true, player);
+                board[pos] = EMPTY_SPACE; 
                 if (v < best_value) {
                     best_value = v;
                     best_move = pos;

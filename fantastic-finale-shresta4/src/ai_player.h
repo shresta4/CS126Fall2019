@@ -19,16 +19,16 @@ class AI_Player {
     vector<vector<int>> lookup;
     AI_Player();
     AI_Player(string i, char p, int current_wins);
-    int GetNextMove(string board, int opponent_piece, char EMPTY_SPACE);
+    int GetNextMove(const string &board, int opponent_piece, char EMPTY_SPACE);
     void AddWin();
     int AI_Player::BasicStrategy(string board, int opponent_piece);
     int AI_Player::BestChancePosition(string board, int opponent_piece);
     int AI_Player::Minimax(string board, char player, int depth,
                            bool maximizing_player, char opponent);
-    int AI_Player::HeuristicCalculator(string board, char player,
+    int AI_Player::HeuristicCalculator(const string &board, char player,
                                        char opponent);
     string AI_Player::MakeTemporaryMove(string board, char player,
-                                        int position);
-    vector<int> AI_Player::NextMoves(string board, char player, char opponent); 
+                                        int position); //not using
+    vector<int> AI_Player::NextMoves(const string &board, char player, char opponent); 
     void AI_Player::GenerateLookupTable();
 };

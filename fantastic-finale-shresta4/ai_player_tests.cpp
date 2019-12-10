@@ -1,4 +1,4 @@
-#include "catch.hpp"
+/*#include "catch.hpp"
 #include "gomoku_board.h"
 
 using namespace std;
@@ -24,4 +24,4 @@ TEST_CASE("Testing if it places a move correctly") {
     // int next_move = gb.ai.GetNextMove(gb.board, gb.human.piece, EMPTY_SPACE);
     string mock = gb.ai.MakeTemporaryMove(gb.board, gb.ai.piece, 0); 
     REQUIRE(gb.board[0] == gb.ai.piece);
-}
+}*/

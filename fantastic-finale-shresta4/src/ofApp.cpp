@@ -87,7 +87,7 @@ void ofApp::readFromJson() {
 void ofApp::update() {
     ofSetWindowTitle("Free style Gomoku");
 
-	ofFill();
+    ofFill();
     for (Circle c : circles) {
         ofSetColor(c.color, c.color, c.color);
         ofDrawCircle(c.x, c.y, c.radius);
@@ -144,7 +144,7 @@ void ofApp::update() {
     if (gb.GetWinner() != "no_result") {
         r.current_player_id = "no_player";
     }
-    if (r.current_player_id == r.ai.id) {
+    if (r.current_player_id == r.ai.id && counter == 1) {
         int move = r.ai.GetNextMove(gb.board, r.human.piece, EMPTY_SPACE);
         gb.PlacePiece(move, r.ai.piece);
 
@@ -156,12 +156,12 @@ void ofApp::update() {
 
         r.current_player_id = r.human.id;
     }
+    counter++; 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-    cout << "draw" << endl; 
-    // draw board
+   // draw board
     ofNoFill();
     ofSetColor(0, 0, 0);
     for (int i = 0; i < BOARD_SIZE - 1; i++) {
@@ -185,10 +185,7 @@ void ofApp::draw() {
     // text
     glPointSize(10);
     ofSetColor(0, 0, 0);
-    /*ofDrawBitmapString(
-        "Gomoku!",
-        ((BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN) / 2 + DISPLACE,
-        (BOARD_SIZE) * (BOARD_SIZE + MARGIN) * SCALE + MARGIN * 5 + DISPLACE);*/
+   
 
     if (gb.GetWinner() == "no_result") {
         if (r.current_player_id == r.human.id) {
@@ -258,6 +255,7 @@ void ofApp::mousePressed(int x, int y, int button) {
             // have to check if that's a valid click
             bool moved = gb.PlacePiece(index, gb.human.piece);
             if (moved) {
+                counter = 0; 
                 convertPointToIndex(new_coords[0], new_coords[1]);
                 Circle c = Circle(new_coords[0], new_coords[1], BOARD_SIZE,
                                   pieceToColorMap[r.human.piece]);

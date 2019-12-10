@@ -21,6 +21,7 @@ class ofApp : public ofBaseApp {
     GomokuBoard gb = GomokuBoard();
     Round r = Round(gb.ai, gb.human, gb);
     int currentPlayer = 1;
+    int counter = 0; 
     vector<Circle> circles;
     map<char, int> pieceToColorMap = {
         {'X', MIN_COLOR},
