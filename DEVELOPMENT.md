@@ -45,9 +45,9 @@
 
 12/10/2019
 - Make AI using Minimax algorithm
+- Test cases
 
 11/_ /2019 
 - UI for name and piece
 - Make AI faster, place my piece before AI does
-- test cases 
 - Fix error with lookup table
