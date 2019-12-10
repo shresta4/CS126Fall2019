@@ -48,7 +48,6 @@
 
 11/_ /2019 
 - UI for name and piece
-- Make a file with constants "tie" "no result" json file etc etc., Save no_player as a constant  
 - Make AI faster, place my piece before AI does
 - test cases 
 - Fix error with lookup table
