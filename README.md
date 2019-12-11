@@ -6,4 +6,4 @@ Shresta Bangaru | CS126 Final Project
 * Windows machine
 * Microsoft Visual Studio 2017 
 * Openframeworks (add-ons: ofxButtons, ofxXmlSettings) 
-* Download nholmann/json library (www.google.com) 
+* Download nholmann/json library [haiii](www.google.com) 
