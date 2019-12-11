@@ -5,5 +5,5 @@ Shresta Bangaru | CS126 Final Project
 ## Requirements
 * Windows machine
 * Microsoft Visual Studio 2017 
-* Openframeworks (add-ons: ofxButtons, ofxXmlSettings) 
-* Download [nlohmann/json](https://github.com/nlohmann/json) library 
+* Openframeworks (add-ons: [ofxButtons](https://github.com/timknapen/ofxButtons), ofxXmlSettings) 
+* Download [nlohmann/json](https://github.com/nlohmann/json) 
