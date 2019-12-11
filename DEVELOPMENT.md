@@ -51,3 +51,4 @@
 11/_ /2019 
 - UI for name and piece
 - Fix error with lookup table
+- Comments/documentation
