@@ -52,3 +52,4 @@
 - UI for name and piece
 - Fix error with lookup table
 - Comments/documentation
+- Improve AI to have more priority on 3's in a row
